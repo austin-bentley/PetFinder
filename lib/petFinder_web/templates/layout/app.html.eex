@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PetFinder</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+  </head>
+  <body>
+    <header>
+      <section class="container">
+        <img src="<%= Routes.static_path(@conn, "/images/1561864_stock-photo-group-of-pets.jpg") %>" alt="assorted animals"/>
+      </section>
+      <nav role="navigation">
+        <%= if signed_in?(@conn) do %>
+          <%= link "My Profile", to: Routes.user_path(@conn, :show, @user_id) %>
+          <%= button "Sign out", to: Routes.session_path(@conn, :delete), method: :delete %>
+        <% else %>
+          <%= unless is_route_sign_in_or_up(@conn) do %>
+            <%= link "Sign In", to: Routes.session_path(@conn, :new) %> 
+            | 
+            <%= link "Sign up", to: Routes.user_path(@conn, :new) %>
+          <% end %>
+        <% end %>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
