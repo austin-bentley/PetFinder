@@ -45,6 +45,7 @@ defmodule PetFinder.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
+      {:floki, "~> 0.21.0"}
     ]
   end
 

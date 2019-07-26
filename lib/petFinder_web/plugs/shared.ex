@@ -1,5 +1,4 @@
-defmodule PetFinderWeb.Plugs.Guest do
-  import Phoenix.Controller
+defmodule PetFinderWeb.Plugs.Shared do
   import Plug.Conn
 
   def init(default), do: default
@@ -8,10 +7,9 @@ defmodule PetFinderWeb.Plugs.Guest do
     case Plug.Conn.get_session(conn, :current_user_id) do
       nil ->
         conn
-      _resp ->
+      resp ->
         conn
-        |> redirect(to: "/")
-        |> halt()
+        |> assign(:user_id, resp)
     end
   end
 end

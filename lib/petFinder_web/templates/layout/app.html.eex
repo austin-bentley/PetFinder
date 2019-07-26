@@ -14,7 +14,7 @@
       </section>
       <nav role="navigation">
         <%= if signed_in?(@conn) do %>
-          <%= link "My Profile", to: Routes.user_path(@conn, :show, @user_id) %>
+          <%= link "My Profile", to: Routes.user_path(@conn, :show, @conn.assigns.user_id) %>
           <%= button "Sign out", to: Routes.session_path(@conn, :delete), method: :delete %>
         <% else %>
           <%= unless is_route_sign_in_or_up(@conn) do %>

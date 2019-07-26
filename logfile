@@ -1,0 +1,7 @@
+2019-07-26 10:04:38.364 MDT [14024] LOG:  listening on IPv6 address "::1", port 5432
+2019-07-26 10:04:38.364 MDT [14024] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-07-26 10:04:38.365 MDT [14024] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-07-26 10:04:38.383 MDT [14025] LOG:  database system was shut down at 2019-07-25 22:01:45 MDT
+2019-07-26 10:04:38.388 MDT [14024] LOG:  database system is ready to accept connections
+2019-07-26 10:05:13.117 MDT [14108] ERROR:  role "postgres" already exists
+2019-07-26 10:05:13.117 MDT [14108] STATEMENT:  CREATE ROLE postgres PASSWORD 'md53175bce1d3201d16594cebf9d7eb3f9d' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;

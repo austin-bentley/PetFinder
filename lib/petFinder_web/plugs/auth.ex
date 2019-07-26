@@ -5,11 +5,14 @@ defmodule PetFinderWeb.Plugs.Auth do
   def init(default), do: default
 
   def call(conn, _opts) do
-    if !Plug.Conn.get_session(conn, :current_user_id) do
-      conn
-      |> redirect(to: "/sign-in")
-      |> halt()
-    end
-    conn
+      case Plug.Conn.get_session(conn, :current_user_id) do
+        nil ->
+          conn
+          |> redirect(to: "/sign-in")
+          |> halt()
+        resp ->
+          conn
+          |> assign(:user_id, resp)
+      end
   end
 end

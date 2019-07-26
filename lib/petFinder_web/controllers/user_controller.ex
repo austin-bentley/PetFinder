@@ -29,7 +29,7 @@ defmodule PetFinderWeb.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Account.get_user!(id)
-    render(conn, "show.html", user: user, user_id: Plug.Conn.get_session(conn, :current_user_id))
+    render(conn, "show.html", user: user)
   end
 
   def edit(conn, %{"id" => id}) do

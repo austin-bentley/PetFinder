@@ -33,7 +33,7 @@ defmodule PetFinderWeb.Router do
   end
 
   scope "/", PetFinderWeb do
-    pipe_through :browser
+    pipe_through [:browser, PetFinderWeb.Plugs.Shared]
 
     get "/", PageController, :index
   end

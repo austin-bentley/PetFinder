@@ -1,1 +1,4 @@
-<h1>User</h1>
+<div class="user-header">
+    <h1>User</h1>
+    <%= button "New Post", to: Routes.post_path(@conn, :new), method: :get %> 
+</div>
