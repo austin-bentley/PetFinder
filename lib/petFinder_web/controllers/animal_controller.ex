@@ -16,10 +16,10 @@ defmodule PetFinderWeb.AnimalController do
 
   def create(conn, %{"animal" => animal_params}) do
     case Pet.create_animal(animal_params) do
-      {:ok, animal} ->
+      {:ok, _animal} ->
         conn
         |> put_flash(:info, "Animal created successfully.")
-        |> redirect(to: Routes.animal_path(conn, :show, animal))
+        |> redirect(to: Routes.user_path(conn, :show, conn.assigns.user_id))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)

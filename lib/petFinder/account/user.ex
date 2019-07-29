@@ -8,7 +8,7 @@ defmodule PetFinder.Account.User do
   schema "users" do
     field :encrypted_password, :string
     field :username, :string
-    field :zip_code, :integer, default: nil
+    field :zip_code, :string, default: ""
     timestamps()
   end
 
