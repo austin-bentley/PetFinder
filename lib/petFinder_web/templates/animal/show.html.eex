@@ -19,5 +19,4 @@
 
 </ul>
 
-<span><%= link "Edit", to: Routes.animal_path(@conn, :edit, @animal) %></span>
-<span><%= link "Back", to: Routes.animal_path(@conn, :index) %></span>
+<%# <span><%= link "Edit", to: Routes.use_animal_path(@conn, :edit, @animal)</span> %>

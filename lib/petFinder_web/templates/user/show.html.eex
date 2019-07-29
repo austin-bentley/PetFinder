@@ -4,4 +4,13 @@
 </div>
 
 <div class="user-body">
+    <table>
+        <%= for animal <- @animals do %>
+            <tr>
+                <td><%= animal.species %> </td>
+                <td><%= animal.color %></td>
+                <td><%= link "Edit", to: Routes.user_animal_path(@conn, :show, @conn.assigns.user_id, animal.id) %></td>
+            </tr>
+        <% end %>
+    </table>
 </div>

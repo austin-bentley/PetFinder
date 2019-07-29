@@ -21,6 +21,12 @@ defmodule PetFinder.Pet do
     Repo.all(Animal)
   end
 
+  def get_user_animals!(id) do
+    id = String.to_integer(id)
+    query = from a in "animals", where: a.user_id == ^id, select: [:id, :species, :color], order_by: [:id]
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single animal.
 

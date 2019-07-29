@@ -26,16 +26,16 @@ defmodule PetFinderWeb.AnimalController do
     end
   end
 
-  # def show(conn, %{"id" => id}) do
-  #   animal = Pet.get_animal!(id)
-  #   render(conn, "show.html", animal: animal)
-  # end
+  def show(conn, %{"id" => id}) do
+    animal = Pet.get_animal!(id)
+    render(conn, "show.html", animal: animal)
+  end
 
-  # def edit(conn, %{"id" => id}) do
-  #   animal = Pet.get_animal!(id)
-  #   changeset = Pet.change_animal(animal)
-  #   render(conn, "edit.html", animal: animal, changeset: changeset)
-  # end
+  def edit(conn, %{"id" => id}) do
+    animal = Pet.get_animal!(id)
+    changeset = Pet.change_animal(animal)
+    render(conn, "edit.html", animal: animal, changeset: changeset)
+  end
 
   # def update(conn, %{"id" => id, "animal" => animal_params}) do
   #   animal = Pet.get_animal!(id)

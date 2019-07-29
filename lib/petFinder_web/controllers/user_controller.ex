@@ -3,6 +3,7 @@ defmodule PetFinderWeb.UserController do
 
   alias PetFinder.Account
   alias PetFinder.Account.User
+  alias PetFinder.Pet
 
   # def index(conn, _params) do
   #   users = Account.list_users()
@@ -29,8 +30,8 @@ defmodule PetFinderWeb.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Account.get_user!(id)
-    IO.inspect(user, label: USEERRRRR)
-    render(conn, "show.html", user: user)
+    animals = Pet.get_user_animals!(id)
+    render(conn, "show.html", user: user, animals: animals)
   end
 
   def edit(conn, %{"id" => id}) do
