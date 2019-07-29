@@ -10,14 +10,14 @@
   <%= error_tag f, :species %>
 
   <%= label f, :color %>
-  <%= multiple_select f, :color, ["Option 1": "option1", "Option 2": "option2"] %>
+  <%= multiple_select f, :color, ["Black": 1, "brown": 2, "White": 3] %>
   <%= error_tag f, :color %>
 
   <%= label f, :location %>
-  <%= number_input f, :location %>
+  <%= text_input f, :location, maxLength: 5 %>
   <%= error_tag f, :location %>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Post" %>
   </div>
 <% end %>

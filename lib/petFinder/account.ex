@@ -7,6 +7,7 @@ defmodule PetFinder.Account do
   alias PetFinder.Repo
 
   alias PetFinder.Account.User
+  alias PetFinder.Pet.Post
 
   @doc """
   Returns the list of users.
@@ -44,6 +45,8 @@ defmodule PetFinder.Account do
 
   """
   def get_user!(id), do: Repo.get!(User, id)
+
+  def get_all_posts!(_id), do: Repo.all(Post)
 
   @doc """
   Creates a user.

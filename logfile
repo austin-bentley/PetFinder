@@ -5,3 +5,356 @@
 2019-07-26 10:04:38.388 MDT [14024] LOG:  database system is ready to accept connections
 2019-07-26 10:05:13.117 MDT [14108] ERROR:  role "postgres" already exists
 2019-07-26 10:05:13.117 MDT [14108] STATEMENT:  CREATE ROLE postgres PASSWORD 'md53175bce1d3201d16594cebf9d7eb3f9d' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;
+2019-07-29 12:29:09.114 MDT [96913] ERROR:  database "ecto_test" does not exist
+2019-07-29 12:29:09.114 MDT [96913] STATEMENT:  DROP DATABASE "ecto_test"
+2019-07-29 12:29:09.756 MDT [96915] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:29:09.756 MDT [96915] STATEMENT:  INVALID
+2019-07-29 12:29:09.770 MDT [96915] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:29:09.770 MDT [96915] STATEMENT:  INVALID
+2019-07-29 12:29:09.770 MDT [96915] ERROR:  current transaction is aborted, commands ignored until end of transaction block
+2019-07-29 12:29:09.770 MDT [96915] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:29:09.898 MDT [96932] ERROR:  conflicting key value violates exclusion constraint "cannot_overlap"
+2019-07-29 12:29:09.898 MDT [96932] DETAIL:  Key (int4range("from", "to", '[]'::text))=([9,13)) conflicts with existing key (int4range("from", "to", '[]'::text))=([0,11)).
+2019-07-29 12:29:09.898 MDT [96932] STATEMENT:  INSERT INTO "constraints_test" ("from","to") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:29:09.902 MDT [96928] ERROR:  conflicting key value violates exclusion constraint "cannot_overlap"
+2019-07-29 12:29:09.902 MDT [96928] DETAIL:  Key (int4range("from", "to", '[]'::text))=([9,13)) conflicts with existing key (int4range("from", "to", '[]'::text))=([0,11)).
+2019-07-29 12:29:09.902 MDT [96928] STATEMENT:  INSERT INTO "constraints_test" ("from","to") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:29:09.903 MDT [96927] ERROR:  conflicting key value violates exclusion constraint "cannot_overlap"
+2019-07-29 12:29:09.903 MDT [96927] DETAIL:  Key (int4range("from", "to", '[]'::text))=([9,13)) conflicts with existing key (int4range("from", "to", '[]'::text))=([0,11)).
+2019-07-29 12:29:09.903 MDT [96927] STATEMENT:  INSERT INTO "constraints_test" ("from","to") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:29:09.904 MDT [96930] ERROR:  new row for relation "constraints_test" violates check constraint "positive_price"
+2019-07-29 12:29:09.904 MDT [96930] DETAIL:  Failing row contains (6, -10, null, null).
+2019-07-29 12:29:09.904 MDT [96930] STATEMENT:  INSERT INTO "constraints_test" ("price") VALUES ($1) RETURNING "id"
+2019-07-29 12:29:09.905 MDT [96929] ERROR:  new row for relation "constraints_test" violates check constraint "positive_price"
+2019-07-29 12:29:09.905 MDT [96929] DETAIL:  Failing row contains (7, -10, null, null).
+2019-07-29 12:29:09.905 MDT [96929] STATEMENT:  INSERT INTO "constraints_test" ("price") VALUES ($1) RETURNING "id"
+2019-07-29 12:29:09.907 MDT [96931] ERROR:  new row for relation "constraints_test" violates check constraint "positive_price"
+2019-07-29 12:29:09.907 MDT [96931] DETAIL:  Failing row contains (8, -10, null, null).
+2019-07-29 12:29:09.907 MDT [96931] STATEMENT:  INSERT INTO "constraints_test" ("price") VALUES ($1) RETURNING "id"
+2019-07-29 12:29:09.922 MDT [96929] ERROR:  column d0.to_be_removed does not exist at character 8
+2019-07-29 12:29:09.922 MDT [96929] STATEMENT:  SELECT d0."to_be_removed" FROM "drop_col_if_exists_migration" AS d0
+2019-07-29 12:29:10.723 MDT [96915] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:10.723 MDT [96915] DETAIL:  Key (uuid)=(61c01f2d-2882-4611-b8f3-35be8415125f) already exists.
+2019-07-29 12:29:10.723 MDT [96915] STATEMENT:  INSERT INTO "posts" ("author_id","public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "id"
+2019-07-29 12:29:10.790 MDT [96926] ERROR:  deadlock detected
+2019-07-29 12:29:10.790 MDT [96926] DETAIL:  Process 96926 waits for ExclusiveLock on advisory lock [16788,0,1,1]; blocked by process 96925.
+	Process 96925 waits for ExclusiveLock on advisory lock [16788,0,2,1]; blocked by process 96926.
+	Process 96926: SELECT pg_advisory_xact_lock($1);
+	Process 96925: SELECT pg_advisory_xact_lock($1);
+2019-07-29 12:29:10.790 MDT [96926] HINT:  See server log for query details.
+2019-07-29 12:29:10.790 MDT [96926] STATEMENT:  SELECT pg_advisory_xact_lock($1);
+2019-07-29 12:29:10.790 MDT [96926] ERROR:  current transaction is aborted, commands ignored until end of transaction block
+2019-07-29 12:29:10.790 MDT [96926] STATEMENT:  SELECT 1
+2019-07-29 12:29:10.792 MDT [96932] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:29:10.792 MDT [96932] STATEMENT:  INVALID
+2019-07-29 12:29:10.793 MDT [96933] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:29:10.793 MDT [96933] STATEMENT:  INVALID
+2019-07-29 12:29:10.794 MDT [96933] ERROR:  current transaction is aborted, commands ignored until end of transaction block
+2019-07-29 12:29:10.794 MDT [96933] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:29:13.203 MDT [96920] ERROR:  relation "this_surely_does_not_exist.comments" does not exist at character 95
+2019-07-29 12:29:13.203 MDT [96920] STATEMENT:  SELECT c0."id", c0."text", c0."lock_version", c0."post_id", c0."author_id", c0."post_id" FROM "this_surely_does_not_exist"."comments" AS c0 WHERE (c0."post_id" = $1) ORDER BY c0."post_id"
+2019-07-29 12:29:13.280 MDT [96918] ERROR:  relation "this_surely_does_not_exist.comments" does not exist at character 95
+2019-07-29 12:29:13.280 MDT [96918] STATEMENT:  SELECT c0."id", c0."text", c0."lock_version", c0."post_id", c0."author_id", c0."post_id" FROM "this_surely_does_not_exist"."comments" AS c0 WHERE (c0."post_id" = $1) ORDER BY c0."post_id"
+2019-07-29 12:29:16.474 MDT [96917] ERROR:  relation "oops.posts" does not exist at character 13
+2019-07-29 12:29:16.474 MDT [96917] STATEMENT:  INSERT INTO "oops"."posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:29:16.474 MDT [96917] ERROR:  relation "oops.posts" does not exist at character 8
+2019-07-29 12:29:16.474 MDT [96917] STATEMENT:  UPDATE "oops"."posts" SET "title" = $1, "updated_at" = $2 WHERE "id" = $3
+2019-07-29 12:29:16.475 MDT [96917] ERROR:  relation "oops.comments" does not exist at character 13
+2019-07-29 12:29:16.475 MDT [96917] STATEMENT:  DELETE FROM "oops"."comments" AS c0 WHERE (c0."post_id" = $1)
+2019-07-29 12:29:16.481 MDT [96920] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.481 MDT [96920] DETAIL:  Key (uuid)=(1a066eca-5c9f-4f3d-9821-2aa0e48af3f8) already exists.
+2019-07-29 12:29:16.481 MDT [96920] STATEMENT:  INSERT INTO "posts" AS p0 ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO UPDATE SET "title" = $3
+2019-07-29 12:29:16.498 MDT [96921] ERROR:  duplicate key value violates unique constraint "posts_pkey"
+2019-07-29 12:29:16.498 MDT [96921] DETAIL:  Key (id)=(182) already exists.
+2019-07-29 12:29:16.498 MDT [96921] STATEMENT:  INSERT INTO "posts" ("id","public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5,$6)
+2019-07-29 12:29:16.504 MDT [96918] ERROR:  duplicate key value violates unique constraint "posts_users_composite_pk_post_id_user_id_index"
+2019-07-29 12:29:16.504 MDT [96918] DETAIL:  Key (post_id, user_id)=(183, 66) already exists.
+2019-07-29 12:29:16.504 MDT [96918] STATEMENT:  INSERT INTO "posts_users_composite_pk" ("post_id","user_id","inserted_at","updated_at") VALUES ($1,$2,$3,$4)
+2019-07-29 12:29:16.526 MDT [96921] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.526 MDT [96921] DETAIL:  Key (uuid)=(1ea496c1-7d3a-4a98-b658-6cf7a1e9d7d1) already exists.
+2019-07-29 12:29:16.526 MDT [96921] STATEMENT:  INSERT INTO "posts" AS p0 ("public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5) ON CONFLICT ("id") DO UPDATE SET "title" = $6 RETURNING "id"
+2019-07-29 12:29:16.536 MDT [96917] ERROR:  duplicate key value violates unique constraint "posts_users_composite_pk_post_id_user_id_index"
+2019-07-29 12:29:16.536 MDT [96917] DETAIL:  Key (post_id, user_id)=(198, 68) already exists.
+2019-07-29 12:29:16.536 MDT [96917] STATEMENT:  INSERT INTO "posts_users_composite_pk" ("post_id","user_id","inserted_at","updated_at") VALUES ($1,$2,$3,$4)
+2019-07-29 12:29:16.546 MDT [96922] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.546 MDT [96922] DETAIL:  Key (uuid)=(812d9bfe-42e5-4368-9793-3b91374d1035) already exists.
+2019-07-29 12:29:16.546 MDT [96922] STATEMENT:  INSERT INTO "posts" AS p0 ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO UPDATE SET "title" = 'second' RETURNING "id"
+2019-07-29 12:29:16.547 MDT [96923] ERROR:  relation "oops.posts" does not exist at character 8
+2019-07-29 12:29:16.547 MDT [96923] STATEMENT:  UPDATE "oops"."posts" AS p0 SET "title" = $1
+2019-07-29 12:29:16.555 MDT [96915] ERROR:  update or delete on table "users" violates foreign key constraint "permalinks_user_id_fkey" on table "permalinks"
+2019-07-29 12:29:16.555 MDT [96915] DETAIL:  Key (id)=(69) is still referenced from table "permalinks".
+2019-07-29 12:29:16.555 MDT [96915] STATEMENT:  DELETE FROM "users" WHERE "id" = $1
+2019-07-29 12:29:16.560 MDT [96917] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.560 MDT [96917] DETAIL:  Key (uuid)=(ab90eac5-0cc9-4143-bc44-48ca5a51b7b8) already exists.
+2019-07-29 12:29:16.560 MDT [96917] STATEMENT:  INSERT INTO "posts" AS p0 ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO UPDATE SET "title" = $3
+2019-07-29 12:29:16.577 MDT [96923] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.577 MDT [96923] DETAIL:  Key (uuid)=(4cb5635a-ba8b-4be0-a3fa-98cf3757af6d) already exists.
+2019-07-29 12:29:16.577 MDT [96923] STATEMENT:  INSERT INTO "posts" AS p0 ("public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5) ON CONFLICT ("id") DO UPDATE SET "title" = 'second' RETURNING "id"
+2019-07-29 12:29:16.595 MDT [96924] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:29:16.595 MDT [96924] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:29:16.595 MDT [96924] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:29:16.596 MDT [96924] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:29:16.596 MDT [96924] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:29:16.596 MDT [96924] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:29:16.597 MDT [96924] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:29:16.597 MDT [96924] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:29:16.597 MDT [96924] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:29:16.600 MDT [96920] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.600 MDT [96920] DETAIL:  Key (uuid)=(286884e7-0688-4aa0-800f-aa93989411a9) already exists.
+2019-07-29 12:29:16.600 MDT [96920] STATEMENT:  INSERT INTO "posts" ("title","uuid") VALUES ($1,$2)
+2019-07-29 12:29:16.736 MDT [96919] ERROR:  relation "oops.posts" does not exist at character 13
+2019-07-29 12:29:16.736 MDT [96919] STATEMENT:  INSERT INTO "oops"."posts" VALUES (DEFAULT),(DEFAULT)
+2019-07-29 12:29:16.759 MDT [96921] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:29:16.759 MDT [96921] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:29:16.759 MDT [96921] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:29:16.760 MDT [96921] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:29:16.760 MDT [96921] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:29:16.760 MDT [96921] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:29:16.761 MDT [96921] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:29:16.761 MDT [96921] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:29:16.761 MDT [96921] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:29:16.762 MDT [96918] ERROR:  duplicate key value violates unique constraint "customs_uuid_index"
+2019-07-29 12:29:16.762 MDT [96918] DETAIL:  Key (uuid)=(fcb33820-a2c7-4144-81eb-73c1d9a94838) already exists.
+2019-07-29 12:29:16.762 MDT [96918] STATEMENT:  INSERT INTO "customs" ("uuid","bid") VALUES ($1,$2)
+2019-07-29 12:29:16.772 MDT [96917] ERROR:  insert or update on table "permalinks" violates foreign key constraint "permalinks_post_id_fkey"
+2019-07-29 12:29:16.772 MDT [96917] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:29:16.772 MDT [96917] STATEMENT:  INSERT INTO "permalinks" ("post_id") VALUES ($1) RETURNING "id"
+2019-07-29 12:29:16.774 MDT [96917] ERROR:  insert or update on table "permalinks" violates foreign key constraint "permalinks_post_id_fkey"
+2019-07-29 12:29:16.774 MDT [96917] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:29:16.774 MDT [96917] STATEMENT:  INSERT INTO "permalinks" ("post_id") VALUES ($1) RETURNING "id"
+2019-07-29 12:29:16.775 MDT [96920] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.775 MDT [96920] DETAIL:  Key (uuid)=(dee1512c-2a17-4a1e-a103-4fc1ec410dbd) already exists.
+2019-07-29 12:29:16.775 MDT [96920] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:29:16.776 MDT [96920] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.776 MDT [96920] DETAIL:  Key (uuid)=(dee1512c-2a17-4a1e-a103-4fc1ec410dbd) already exists.
+2019-07-29 12:29:16.776 MDT [96920] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:29:16.776 MDT [96920] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.776 MDT [96920] DETAIL:  Key (uuid)=(dee1512c-2a17-4a1e-a103-4fc1ec410dbd) already exists.
+2019-07-29 12:29:16.776 MDT [96920] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:29:16.797 MDT [96921] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.797 MDT [96921] DETAIL:  Key (uuid)=(0a3e891c-70aa-4e2d-9e7d-94bd8a14033a) already exists.
+2019-07-29 12:29:16.797 MDT [96921] STATEMENT:  INSERT INTO "posts" ("author_id","public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5) RETURNING "id"
+2019-07-29 12:29:16.800 MDT [96915] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.800 MDT [96915] DETAIL:  Key (uuid)=(d8d65303-303f-4ccb-bd8c-fa3bc896c5a5) already exists.
+2019-07-29 12:29:16.800 MDT [96915] STATEMENT:  INSERT INTO "posts" AS p0 ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO UPDATE SET "title" = 'second'
+2019-07-29 12:29:16.827 MDT [96921] ERROR:  relation "oops.posts" does not exist at character 13
+2019-07-29 12:29:16.827 MDT [96921] STATEMENT:  DELETE FROM "oops"."posts" AS p0
+2019-07-29 12:29:16.831 MDT [96924] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.831 MDT [96924] DETAIL:  Key (uuid)=(68501bed-3bdc-45b5-b4e6-94f4e35e4c01) already exists.
+2019-07-29 12:29:16.831 MDT [96924] STATEMENT:  INSERT INTO "posts" ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO NOTHING
+2019-07-29 12:29:16.905 MDT [96918] ERROR:  update or delete on table "users" violates foreign key constraint "permalinks_user_id_fkey" on table "permalinks"
+2019-07-29 12:29:16.905 MDT [96918] DETAIL:  Key (id)=(73) is still referenced from table "permalinks".
+2019-07-29 12:29:16.905 MDT [96918] STATEMENT:  DELETE FROM "users" WHERE "id" = $1
+2019-07-29 12:29:16.929 MDT [96916] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:29:16.929 MDT [96916] DETAIL:  Key (uuid)=(e67fde41-9d44-45fb-8e03-3adbcdad65ce) already exists.
+2019-07-29 12:29:16.929 MDT [96916] STATEMENT:  INSERT INTO "posts" ("public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5) ON CONFLICT ("id") DO NOTHING RETURNING "id"
+2019-07-29 12:29:16.934 MDT [96922] ERROR:  update or delete on table "users" violates foreign key constraint "permalinks_user_id_fkey" on table "permalinks"
+2019-07-29 12:29:16.934 MDT [96922] DETAIL:  Key (id)=(74) is still referenced from table "permalinks".
+2019-07-29 12:29:16.934 MDT [96922] STATEMENT:  DELETE FROM "users" WHERE "id" = $1
+2019-07-29 12:29:17.460 MDT [96923] ERROR:  syntax error at or near "BEG" at character 1
+2019-07-29 12:29:17.460 MDT [96923] STATEMENT:  BEG
+2019-07-29 12:29:18.008 MDT [96933] ERROR:  column d0.to_be_removed does not exist at character 8
+2019-07-29 12:29:18.008 MDT [96933] STATEMENT:  SELECT d0."to_be_removed" FROM "drop_col_migration" AS d0
+2019-07-29 12:29:18.054 MDT [96932] ERROR:  null value in column "from_null_to_not_null" violates not-null constraint
+2019-07-29 12:29:18.054 MDT [96932] DETAIL:  Failing row contains (2, null, foo, null, 0).
+2019-07-29 12:29:18.054 MDT [96932] STATEMENT:  INSERT INTO alter_col_migration (from_not_null_to_null) VALUES ('foo')
+2019-07-29 12:29:19.013 MDT [96934] ERROR:  duplicate key value violates unique constraint "transactions_pkey"
+2019-07-29 12:29:19.013 MDT [96934] DETAIL:  Key (id)=(1) already exists.
+2019-07-29 12:29:19.013 MDT [96934] STATEMENT:  INSERT INTO "transactions" ("id","num") VALUES ($1,$2)
+2019-07-29 12:29:19.020 MDT [96927] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:29:19.025 MDT [96928] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:29:19.052 MDT [96926] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:29:19.059 MDT [96919] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:29:19.059 MDT [96919] STATEMENT:  INVALID
+2019-07-29 12:29:19.265 MDT [96923] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:29:19.683 MDT [96922] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:29:20.692 MDT [96934] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:29:20.692 MDT [96925] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:29:20.694 MDT [96965] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:29:20.710 MDT [96932] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:29:20.815 MDT [96920] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:32:52.481 MDT [97606] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:32:52.481 MDT [97606] STATEMENT:  INVALID
+2019-07-29 12:32:52.492 MDT [97611] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:32:52.492 MDT [97611] STATEMENT:  INVALID
+2019-07-29 12:32:52.493 MDT [97611] ERROR:  current transaction is aborted, commands ignored until end of transaction block
+2019-07-29 12:32:52.493 MDT [97611] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:32:52.501 MDT [97619] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:32:52.501 MDT [97619] STATEMENT:  INVALID
+2019-07-29 12:32:52.501 MDT [97619] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:32:52.501 MDT [97619] STATEMENT:  INVALID
+2019-07-29 12:32:52.502 MDT [97619] ERROR:  current transaction is aborted, commands ignored until end of transaction block
+2019-07-29 12:32:52.502 MDT [97619] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:32:52.586 MDT [97615] ERROR:  conflicting key value violates exclusion constraint "cannot_overlap"
+2019-07-29 12:32:52.586 MDT [97615] DETAIL:  Key (int4range("from", "to", '[]'::text))=([9,13)) conflicts with existing key (int4range("from", "to", '[]'::text))=([0,11)).
+2019-07-29 12:32:52.586 MDT [97615] STATEMENT:  INSERT INTO "constraints_test" ("from","to") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:32:52.590 MDT [97611] ERROR:  conflicting key value violates exclusion constraint "cannot_overlap"
+2019-07-29 12:32:52.590 MDT [97611] DETAIL:  Key (int4range("from", "to", '[]'::text))=([9,13)) conflicts with existing key (int4range("from", "to", '[]'::text))=([0,11)).
+2019-07-29 12:32:52.590 MDT [97611] STATEMENT:  INSERT INTO "constraints_test" ("from","to") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:32:52.591 MDT [97614] ERROR:  conflicting key value violates exclusion constraint "cannot_overlap"
+2019-07-29 12:32:52.591 MDT [97614] DETAIL:  Key (int4range("from", "to", '[]'::text))=([9,13)) conflicts with existing key (int4range("from", "to", '[]'::text))=([0,11)).
+2019-07-29 12:32:52.591 MDT [97614] STATEMENT:  INSERT INTO "constraints_test" ("from","to") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:32:52.592 MDT [97615] ERROR:  new row for relation "constraints_test" violates check constraint "positive_price"
+2019-07-29 12:32:52.592 MDT [97615] DETAIL:  Failing row contains (6, -10, null, null).
+2019-07-29 12:32:52.592 MDT [97615] STATEMENT:  INSERT INTO "constraints_test" ("price") VALUES ($1) RETURNING "id"
+2019-07-29 12:32:52.595 MDT [97613] ERROR:  new row for relation "constraints_test" violates check constraint "positive_price"
+2019-07-29 12:32:52.595 MDT [97613] DETAIL:  Failing row contains (7, -10, null, null).
+2019-07-29 12:32:52.595 MDT [97613] STATEMENT:  INSERT INTO "constraints_test" ("price") VALUES ($1) RETURNING "id"
+2019-07-29 12:32:52.596 MDT [97612] ERROR:  new row for relation "constraints_test" violates check constraint "positive_price"
+2019-07-29 12:32:52.596 MDT [97612] DETAIL:  Failing row contains (8, -10, null, null).
+2019-07-29 12:32:52.596 MDT [97612] STATEMENT:  INSERT INTO "constraints_test" ("price") VALUES ($1) RETURNING "id"
+2019-07-29 12:32:52.619 MDT [97611] ERROR:  column d0.to_be_removed does not exist at character 8
+2019-07-29 12:32:52.619 MDT [97611] STATEMENT:  SELECT d0."to_be_removed" FROM "drop_col_if_exists_migration" AS d0
+2019-07-29 12:32:53.206 MDT [97622] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:53.206 MDT [97622] DETAIL:  Key (uuid)=(eed045da-3636-4c0d-ae3c-f6ef02422134) already exists.
+2019-07-29 12:32:53.206 MDT [97622] STATEMENT:  INSERT INTO "posts" ("author_id","public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "id"
+2019-07-29 12:32:53.506 MDT [97610] ERROR:  deadlock detected
+2019-07-29 12:32:53.506 MDT [97610] DETAIL:  Process 97610 waits for ExclusiveLock on advisory lock [17318,0,2,1]; blocked by process 97607.
+	Process 97607 waits for ExclusiveLock on advisory lock [17318,0,1,1]; blocked by process 97610.
+	Process 97610: SELECT pg_advisory_xact_lock($1);
+	Process 97607: SELECT pg_advisory_xact_lock($1);
+2019-07-29 12:32:53.506 MDT [97610] HINT:  See server log for query details.
+2019-07-29 12:32:53.506 MDT [97610] STATEMENT:  SELECT pg_advisory_xact_lock($1);
+2019-07-29 12:32:53.506 MDT [97610] ERROR:  current transaction is aborted, commands ignored until end of transaction block
+2019-07-29 12:32:53.506 MDT [97610] STATEMENT:  SELECT 1
+2019-07-29 12:32:55.895 MDT [97618] ERROR:  relation "this_surely_does_not_exist.comments" does not exist at character 95
+2019-07-29 12:32:55.895 MDT [97618] STATEMENT:  SELECT c0."id", c0."text", c0."lock_version", c0."post_id", c0."author_id", c0."post_id" FROM "this_surely_does_not_exist"."comments" AS c0 WHERE (c0."post_id" = $1) ORDER BY c0."post_id"
+2019-07-29 12:32:55.945 MDT [97620] ERROR:  relation "this_surely_does_not_exist.comments" does not exist at character 95
+2019-07-29 12:32:55.945 MDT [97620] STATEMENT:  SELECT c0."id", c0."text", c0."lock_version", c0."post_id", c0."author_id", c0."post_id" FROM "this_surely_does_not_exist"."comments" AS c0 WHERE (c0."post_id" = $1) ORDER BY c0."post_id"
+2019-07-29 12:32:59.165 MDT [97633] LOG:  could not receive data from client: Connection reset by peer
+2019-07-29 12:32:59.172 MDT [97623] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.172 MDT [97623] DETAIL:  Key (uuid)=(10eca7b0-08e4-498e-b211-9997b2a1d268) already exists.
+2019-07-29 12:32:59.172 MDT [97623] STATEMENT:  INSERT INTO "posts" AS p0 ("public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5) ON CONFLICT ("id") DO UPDATE SET "title" = $6 RETURNING "id"
+2019-07-29 12:32:59.186 MDT [97617] ERROR:  update or delete on table "users" violates foreign key constraint "permalinks_user_id_fkey" on table "permalinks"
+2019-07-29 12:32:59.186 MDT [97617] DETAIL:  Key (id)=(66) is still referenced from table "permalinks".
+2019-07-29 12:32:59.186 MDT [97617] STATEMENT:  DELETE FROM "users" WHERE "id" = $1
+2019-07-29 12:32:59.210 MDT [97624] ERROR:  relation "oops.posts" does not exist at character 13
+2019-07-29 12:32:59.210 MDT [97624] STATEMENT:  INSERT INTO "oops"."posts" VALUES (DEFAULT),(DEFAULT)
+2019-07-29 12:32:59.211 MDT [97625] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.211 MDT [97625] DETAIL:  Key (uuid)=(25c84989-b1d6-4301-87ca-085bafd58edd) already exists.
+2019-07-29 12:32:59.211 MDT [97625] STATEMENT:  INSERT INTO "posts" AS p0 ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO UPDATE SET "title" = 'second' RETURNING "id"
+2019-07-29 12:32:59.229 MDT [97620] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.229 MDT [97620] DETAIL:  Key (uuid)=(73e60b81-ec67-4fdc-a95f-1b1f36dc3952) already exists.
+2019-07-29 12:32:59.229 MDT [97620] STATEMENT:  INSERT INTO "posts" ("author_id","public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5) RETURNING "id"
+2019-07-29 12:32:59.234 MDT [97624] ERROR:  duplicate key value violates unique constraint "posts_pkey"
+2019-07-29 12:32:59.234 MDT [97624] DETAIL:  Key (id)=(210) already exists.
+2019-07-29 12:32:59.234 MDT [97624] STATEMENT:  INSERT INTO "posts" ("id","public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5,$6)
+2019-07-29 12:32:59.235 MDT [97625] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.235 MDT [97625] DETAIL:  Key (uuid)=(e2715093-8209-4379-aa13-bce93e7c41ec) already exists.
+2019-07-29 12:32:59.235 MDT [97625] STATEMENT:  INSERT INTO "posts" AS p0 ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO UPDATE SET "title" = $3
+2019-07-29 12:32:59.255 MDT [97622] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.255 MDT [97622] DETAIL:  Key (uuid)=(2ed98dd6-c27d-4375-9812-d12faa27955d) already exists.
+2019-07-29 12:32:59.255 MDT [97622] STATEMENT:  INSERT INTO "posts" AS p0 ("public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5) ON CONFLICT ("id") DO UPDATE SET "title" = 'second' RETURNING "id"
+2019-07-29 12:32:59.335 MDT [97619] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:32:59.335 MDT [97619] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:32:59.335 MDT [97619] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:32:59.335 MDT [97619] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:32:59.335 MDT [97619] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:32:59.335 MDT [97619] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:32:59.336 MDT [97619] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:32:59.336 MDT [97619] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:32:59.336 MDT [97619] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:32:59.346 MDT [97624] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.346 MDT [97624] DETAIL:  Key (uuid)=(24af6e83-ccd5-40f3-a23e-dc68a40600cd) already exists.
+2019-07-29 12:32:59.346 MDT [97624] STATEMENT:  INSERT INTO "posts" AS p0 ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO UPDATE SET "title" = $3
+2019-07-29 12:32:59.366 MDT [97616] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:32:59.366 MDT [97616] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:32:59.366 MDT [97616] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:32:59.367 MDT [97616] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:32:59.367 MDT [97616] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:32:59.367 MDT [97616] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:32:59.367 MDT [97616] ERROR:  insert or update on table "comments" violates foreign key constraint "comments_post_id_fkey"
+2019-07-29 12:32:59.367 MDT [97616] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:32:59.367 MDT [97616] STATEMENT:  INSERT INTO "comments" ("lock_version","post_id") VALUES ($1,$2) RETURNING "id"
+2019-07-29 12:32:59.387 MDT [97622] ERROR:  duplicate key value violates unique constraint "posts_users_composite_pk_post_id_user_id_index"
+2019-07-29 12:32:59.387 MDT [97622] DETAIL:  Key (post_id, user_id)=(242, 70) already exists.
+2019-07-29 12:32:59.387 MDT [97622] STATEMENT:  INSERT INTO "posts_users_composite_pk" ("post_id","user_id","inserted_at","updated_at") VALUES ($1,$2,$3,$4)
+2019-07-29 12:32:59.442 MDT [97617] ERROR:  duplicate key value violates unique constraint "customs_uuid_index"
+2019-07-29 12:32:59.442 MDT [97617] DETAIL:  Key (uuid)=(bac26d01-f479-4c37-a00e-84f999ae4e9a) already exists.
+2019-07-29 12:32:59.442 MDT [97617] STATEMENT:  INSERT INTO "customs" ("uuid","bid") VALUES ($1,$2)
+2019-07-29 12:32:59.451 MDT [97620] ERROR:  relation "oops.posts" does not exist at character 8
+2019-07-29 12:32:59.451 MDT [97620] STATEMENT:  UPDATE "oops"."posts" AS p0 SET "title" = $1
+2019-07-29 12:32:59.457 MDT [97624] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.457 MDT [97624] DETAIL:  Key (uuid)=(e15d210e-5839-4298-9add-607b5a721452) already exists.
+2019-07-29 12:32:59.457 MDT [97624] STATEMENT:  INSERT INTO "posts" AS p0 ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO UPDATE SET "title" = 'second'
+2019-07-29 12:32:59.459 MDT [97625] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.459 MDT [97625] DETAIL:  Key (uuid)=(07b857ae-5159-4986-bb0b-64adc04d58c6) already exists.
+2019-07-29 12:32:59.459 MDT [97625] STATEMENT:  INSERT INTO "posts" ("title","uuid") VALUES ($1,$2) ON CONFLICT ("id") DO NOTHING
+2019-07-29 12:32:59.462 MDT [97617] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.462 MDT [97617] DETAIL:  Key (uuid)=(c04462ea-b6ef-42ca-b96e-2f1211f68f9b) already exists.
+2019-07-29 12:32:59.462 MDT [97617] STATEMENT:  INSERT INTO "posts" ("public","title","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4,$5) ON CONFLICT ("id") DO NOTHING RETURNING "id"
+2019-07-29 12:32:59.476 MDT [97619] ERROR:  duplicate key value violates unique constraint "posts_users_composite_pk_post_id_user_id_index"
+2019-07-29 12:32:59.476 MDT [97619] DETAIL:  Key (post_id, user_id)=(264, 71) already exists.
+2019-07-29 12:32:59.476 MDT [97619] STATEMENT:  INSERT INTO "posts_users_composite_pk" ("post_id","user_id","inserted_at","updated_at") VALUES ($1,$2,$3,$4)
+2019-07-29 12:32:59.477 MDT [97620] ERROR:  insert or update on table "permalinks" violates foreign key constraint "permalinks_post_id_fkey"
+2019-07-29 12:32:59.477 MDT [97620] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:32:59.477 MDT [97620] STATEMENT:  INSERT INTO "permalinks" ("post_id") VALUES ($1) RETURNING "id"
+2019-07-29 12:32:59.479 MDT [97620] ERROR:  insert or update on table "permalinks" violates foreign key constraint "permalinks_post_id_fkey"
+2019-07-29 12:32:59.479 MDT [97620] DETAIL:  Key (post_id)=(0) is not present in table "posts".
+2019-07-29 12:32:59.479 MDT [97620] STATEMENT:  INSERT INTO "permalinks" ("post_id") VALUES ($1) RETURNING "id"
+2019-07-29 12:32:59.485 MDT [97623] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.485 MDT [97623] DETAIL:  Key (uuid)=(12ccc331-3cf2-46f5-89f5-c6f00159fd66) already exists.
+2019-07-29 12:32:59.485 MDT [97623] STATEMENT:  INSERT INTO "posts" ("title","uuid") VALUES ($1,$2)
+2019-07-29 12:32:59.494 MDT [97617] ERROR:  relation "oops.posts" does not exist at character 13
+2019-07-29 12:32:59.494 MDT [97617] STATEMENT:  DELETE FROM "oops"."posts" AS p0
+2019-07-29 12:32:59.510 MDT [97620] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.510 MDT [97620] DETAIL:  Key (uuid)=(5c2594ae-12fe-4ade-89c6-a687445ba023) already exists.
+2019-07-29 12:32:59.510 MDT [97620] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:32:59.511 MDT [97620] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.511 MDT [97620] DETAIL:  Key (uuid)=(5c2594ae-12fe-4ade-89c6-a687445ba023) already exists.
+2019-07-29 12:32:59.511 MDT [97620] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:32:59.512 MDT [97620] ERROR:  duplicate key value violates unique constraint "posts_uuid_index"
+2019-07-29 12:32:59.512 MDT [97620] DETAIL:  Key (uuid)=(5c2594ae-12fe-4ade-89c6-a687445ba023) already exists.
+2019-07-29 12:32:59.512 MDT [97620] STATEMENT:  INSERT INTO "posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:32:59.567 MDT [97625] ERROR:  update or delete on table "users" violates foreign key constraint "permalinks_user_id_fkey" on table "permalinks"
+2019-07-29 12:32:59.567 MDT [97625] DETAIL:  Key (id)=(73) is still referenced from table "permalinks".
+2019-07-29 12:32:59.567 MDT [97625] STATEMENT:  DELETE FROM "users" WHERE "id" = $1
+2019-07-29 12:32:59.579 MDT [97618] ERROR:  update or delete on table "users" violates foreign key constraint "permalinks_user_id_fkey" on table "permalinks"
+2019-07-29 12:32:59.579 MDT [97618] DETAIL:  Key (id)=(74) is still referenced from table "permalinks".
+2019-07-29 12:32:59.579 MDT [97618] STATEMENT:  DELETE FROM "users" WHERE "id" = $1
+2019-07-29 12:32:59.586 MDT [97620] ERROR:  relation "oops.posts" does not exist at character 13
+2019-07-29 12:32:59.586 MDT [97620] STATEMENT:  INSERT INTO "oops"."posts" ("public","uuid","inserted_at","updated_at") VALUES ($1,$2,$3,$4) RETURNING "id"
+2019-07-29 12:32:59.586 MDT [97620] ERROR:  relation "oops.posts" does not exist at character 8
+2019-07-29 12:32:59.586 MDT [97620] STATEMENT:  UPDATE "oops"."posts" SET "title" = $1, "updated_at" = $2 WHERE "id" = $3
+2019-07-29 12:32:59.586 MDT [97620] ERROR:  relation "oops.comments" does not exist at character 13
+2019-07-29 12:32:59.586 MDT [97620] STATEMENT:  DELETE FROM "oops"."comments" AS c0 WHERE (c0."post_id" = $1)
+2019-07-29 12:33:00.059 MDT [97624] ERROR:  syntax error at or near "BEG" at character 1
+2019-07-29 12:33:00.059 MDT [97624] STATEMENT:  BEG
+2019-07-29 12:33:00.756 MDT [97615] ERROR:  column d0.to_be_removed does not exist at character 8
+2019-07-29 12:33:00.756 MDT [97615] STATEMENT:  SELECT d0."to_be_removed" FROM "drop_col_migration" AS d0
+2019-07-29 12:33:00.777 MDT [97607] ERROR:  null value in column "from_null_to_not_null" violates not-null constraint
+2019-07-29 12:33:00.777 MDT [97607] DETAIL:  Failing row contains (2, null, foo, null, 0).
+2019-07-29 12:33:00.777 MDT [97607] STATEMENT:  INSERT INTO alter_col_migration (from_not_null_to_null) VALUES ('foo')
+2019-07-29 12:33:01.527 MDT [97614] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:33:01.531 MDT [97607] ERROR:  duplicate key value violates unique constraint "transactions_pkey"
+2019-07-29 12:33:01.531 MDT [97607] DETAIL:  Key (id)=(3) already exists.
+2019-07-29 12:33:01.531 MDT [97607] STATEMENT:  INSERT INTO "transactions" ("id","num") VALUES ($1,$2)
+2019-07-29 12:33:01.533 MDT [97612] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:33:01.559 MDT [97638] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:33:01.672 MDT [97623] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:33:02.775 MDT [97624] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:33:03.089 MDT [97619] ERROR:  syntax error at or near "INVALID" at character 1
+2019-07-29 12:33:03.089 MDT [97619] STATEMENT:  INVALID
+2019-07-29 12:33:03.209 MDT [97610] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:33:03.209 MDT [97642] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:33:03.212 MDT [97607] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:33:03.297 MDT [97640] ERROR:  syntax error at or near "WHAT" at character 8
+2019-07-29 12:33:03.297 MDT [97640] STATEMENT:  CREATE WHAT
+2019-07-29 12:33:03.455 MDT [97650] LOG:  unexpected EOF on client connection with an open transaction
+2019-07-29 12:33:03.543 MDT [97652] ERROR:  cached plan must not change result type
+2019-07-29 12:33:03.543 MDT [97652] STATEMENT:  SELECT a0."value" FROM "alter_col_type" AS a0
+2019-07-29 12:33:03.574 MDT [97657] FATAL:  role "randomuser" does not exist
+2019-07-29 12:33:03.894 MDT [97660] FATAL:  role "randomuser" does not exist
+2019-07-29 12:33:04.391 MDT [97667] ERROR:  relation "public.schema_migrations" does not exist at character 21
+2019-07-29 12:33:04.391 MDT [97667] STATEMENT:  SELECT version FROM public."schema_migrations" ORDER BY version
+2019-07-29 12:33:04.940 MDT [97676] ERROR:  relation "public.schema_migrations" does not exist at character 21
+2019-07-29 12:33:04.940 MDT [97676] STATEMENT:  SELECT version FROM public."schema_migrations" ORDER BY version
+2019-07-29 12:33:05.051 MDT [97681] ERROR:  relation "public.schema_migrations" does not exist at character 21
+2019-07-29 12:33:05.051 MDT [97681] STATEMENT:  SELECT version FROM public."schema_migrations" ORDER BY version
+2019-07-29 12:33:05.554 MDT [97687] ERROR:  database "storage_mgt" already exists
+2019-07-29 12:33:05.554 MDT [97687] STATEMENT:  CREATE DATABASE "storage_mgt" ENCODING 'UTF8'
+2019-07-29 12:33:05.716 MDT [97691] ERROR:  failing SQL
+2019-07-29 12:33:05.716 MDT [97691] CONTEXT:  PL/pgSQL function inline_code_block line 1 at RAISE
+2019-07-29 12:33:05.716 MDT [97691] STATEMENT:  DO $$ BEGIN RAISE EXCEPTION 'failing SQL'; END $$;
+2019-07-29 12:33:06.130 MDT [97695] ERROR:  database "storage_mgt" does not exist
+2019-07-29 12:33:06.130 MDT [97695] STATEMENT:  DROP DATABASE "storage_mgt"

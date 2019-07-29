@@ -17,8 +17,12 @@ defmodule PetFinderWeb.Router do
   scope "/", PetFinderWeb do
     pipe_through [:browser, PetFinderWeb.Plugs.Auth]
 
-    resources "/pets", PostController, only: [:create, :new, :delete, :edit]
-    resources "/user", UserController, only: [:show, :edit, :delete]
+
+    resources "/user", UserController, only: [:show, :edit, :delete] do
+      resources "/animals", AnimalController do
+        resources "/posts", PostController, only: [:create, :new, :delete, :edit]
+      end
+    end
     delete "/sign-out", SessionController, :delete
   end
 

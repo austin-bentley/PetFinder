@@ -4,7 +4,7 @@ defmodule PetFinder.Pet.Animal do
 
   schema "animals" do
     field :color, {:array, :string}
-    field :location, :integer
+    field :location, :string
     field :species, :string
     field :user_id, :id
 

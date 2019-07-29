@@ -29,6 +29,7 @@ defmodule PetFinderWeb.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Account.get_user!(id)
+    IO.inspect(user, label: USEERRRRR)
     render(conn, "show.html", user: user)
   end
 
