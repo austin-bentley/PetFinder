@@ -37,19 +37,19 @@ defmodule PetFinderWeb.AnimalController do
     render(conn, "edit.html", animal: animal, changeset: changeset)
   end
 
-  # def update(conn, %{"id" => id, "animal" => animal_params}) do
-  #   animal = Pet.get_animal!(id)
+  def update(conn, %{"id" => id, "animal" => animal_params}) do
+    animal = Pet.get_animal!(id)
 
-  #   case Pet.update_animal(animal, animal_params) do
-  #     {:ok, animal} ->
-  #       conn
-  #       |> put_flash(:info, "Animal updated successfully.")
-  #       |> redirect(to: Routes.animal_path(conn, :show, animal))
+    case Pet.update_animal(animal, animal_params) do
+      {:ok, animal} ->
+        conn
+        |> put_flash(:info, "Animal updated successfully.")
+        |> redirect(to: Routes.user_animal_path(conn, :show, conn.assigns.user_id, animal.id))
 
-  #     {:error, %Ecto.Changeset{} = changeset} ->
-  #       render(conn, "edit.html", animal: animal, changeset: changeset)
-  #   end
-  # end
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "edit.html", animal: animal, changeset: changeset)
+    end
+  end
 
   # def delete(conn, %{"id" => id}) do
   #   animal = Pet.get_animal!(id)
