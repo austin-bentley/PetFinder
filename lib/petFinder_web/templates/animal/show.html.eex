@@ -1,6 +1,9 @@
-<h1>Show Animal</h1>
+<h1>Animal Details</h1>
 
-<ul>
+<span><%= link "Edit", to: Routes.user_animal_path(@conn, :edit, @conn.assigns.user_id, @animal.id) %> | </span>
+<span><%= link "Back", to: Routes.user_path(@conn, :show, @conn.assigns.user_id) %> </span>
+
+<ul class="details-list">
 
   <li>
     <strong>Species:</strong>
@@ -19,5 +22,13 @@
 
 </ul>
 
-<span><%= link "Edit", to: Routes.user_animal_path(@conn, :edit, @conn.assigns.user_id, @animal.id) %></span>
-<span><%= link "Back", to: Routes.user_path(@conn, :show, @conn.assigns.user_id) %> </span>
+<div class="post-container">
+  <h2>Posts about this pet</h2>
+  <%= for post <- @posts do %>
+    <h3>Animal Status: <%= String.capitalize(post.status) %> </h3>
+    <h4>Additional Information:</h4>
+    <span><%= post.description %> </span>
+  <% end %>
+</div>
+
+

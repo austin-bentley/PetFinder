@@ -110,6 +110,12 @@ defmodule PetFinder.Pet do
 
   alias PetFinder.Pet.Post
 
+  def get_animal_posts(animal_id) do
+    animal_id = String.to_integer(animal_id)
+    query = from p in "posts", where: p.animal_id == ^animal_id, select: [:description, :status, :id], order_by: [:id]
+    Repo.all(query)
+  end
+
   @doc """
   Returns the list of posts.
 

@@ -3,16 +3,16 @@
 <ul>
 
   <li>
-    <strong>Description:</strong>
-    <%= @post.description %>
-  </li>
-
-  <li>
     <strong>Status:</strong>
     <%= @post.status %>
   </li>
 
+  <li>
+    <strong>Description:</strong>
+    <%= @post.description %>
+  </li>
+
 </ul>
 
-<span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span>
-<span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>
+<%# <span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %><%#</span> %>
+<%# <span><%= link "Back", to: Routes.post_path(@conn, :index) %><%#</span> %>

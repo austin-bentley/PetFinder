@@ -31,7 +31,7 @@ defmodule PetFinderWeb.PostController do
   #   render(conn, "show.html", post: post)
   # end
 
-  # def edit(conn, %{"id" => id}) do
+  # def edit(conn, %{"animal_id" => _animal_id, "id" => id, "user_id" => _user_id}) do
   #   post = Pet.get_post!(id)
   #   changeset = Pet.change_post(post)
   #   render(conn, "edit.html", post: post, changeset: changeset)
@@ -44,7 +44,7 @@ defmodule PetFinderWeb.PostController do
   #     {:ok, post} ->
   #       conn
   #       |> put_flash(:info, "Post updated successfully.")
-  #       |> redirect(to: Routes.post_path(conn, :show, post))
+  #       |> redirect(to: Routes.user_animal_path(conn, :show, conn.assigns.user_id, post.animal_id))
 
   #     {:error, %Ecto.Changeset{} = changeset} ->
   #       render(conn, "edit.html", post: post, changeset: changeset)

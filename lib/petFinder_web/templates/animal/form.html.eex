@@ -18,6 +18,6 @@
   <%= error_tag f, :location %>
 
   <div>
-    <%= submit "Post" %>
+    <%= submit "Create Animal" %>
   </div>
 <% end %>
