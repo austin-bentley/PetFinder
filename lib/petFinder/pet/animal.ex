@@ -14,7 +14,7 @@ defmodule PetFinder.Pet.Animal do
   @doc false
   def changeset(animal, attrs) do
     animal
-    |> cast(attrs, [:species, :color, :location])
+    |> cast(attrs, [:species, :color, :location, :user_id])
     |> validate_required([:species, :color, :location])
   end
 end

@@ -15,6 +15,7 @@ defmodule PetFinderWeb.AnimalController do
   end
 
   def create(conn, %{"animal" => animal_params}) do
+    animal_params = Map.merge(animal_params, %{"user_id" => conn.assigns.user_id})
     case Pet.create_animal(animal_params) do
       {:ok, _animal} ->
         conn
@@ -29,7 +30,6 @@ defmodule PetFinderWeb.AnimalController do
   def show(conn, %{"id" => id}) do
     animal = Pet.get_animal!(id)
     posts = Pet.get_animal_posts(id)
-    IO.inspect(posts, label: ">>>>")
     render(conn, "show.html", animal: animal, posts: posts)
   end
 
