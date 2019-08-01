@@ -14,7 +14,7 @@ Repo.insert!(%Animal{
 })
 
 Repo.insert!(%Animal{
-  color: ["green, teal"],
+  color: ["green", "teal"],
   species: "Bird",
   user_id: 1
 })

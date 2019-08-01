@@ -8,7 +8,7 @@
         <%= for animal <- @animals do %>
             <tr>
                 <td><%= animal.species %> </td>
-                <td><%= animal.color %></td>
+                <td><%= Enum.join(animal.color, ", ") %></td>
                 <td><%= link "Details", to: Routes.user_animal_path(@conn, :show, @conn.assigns.user_id, animal.id) %></td>
             </tr>
         <% end %>
