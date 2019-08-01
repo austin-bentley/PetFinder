@@ -30,12 +30,12 @@ defmodule PetFinderWeb.Router do
   scope "/", PetFinderWeb do
     pipe_through [:browser, PetFinderWeb.Plugs.Guest]
 
-    # get "/blog/:id", PostController, :show
     resources "/registrations", UserController, only: [:create, :new]
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
   end
 
+  #auth routes
   scope "/", PetFinderWeb do
     pipe_through [:browser, PetFinderWeb.Plugs.Shared]
 

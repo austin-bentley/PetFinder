@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :petFinder, PetFinder.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "docker",
   database: "petfinder_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
@@ -17,7 +17,7 @@ config :petFinder, PetFinder.Repo,
 # with webpack to recompile .js and .css sources.
 config :petFinder, PetFinderWeb.Endpoint,
   http: [port: 4000],
-  debug_errors: true,
+  debug_errors: false,
   code_reloader: true,
   check_origin: false,
   watchers: [
