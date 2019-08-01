@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/app.css">
-<script src="/js/app.js"></script>
-<h1><% @message %></h1>
-<h1><% @status %></h1>
 <img src="<%= Routes.static_path(@conn, "/images/Lost-Pet-Header-Image.jpg")%>" class="hero-image">
+<h1><%= @message %></h1>
+<h1><%= @status %></h1>
+<script src="/js/app.js"></script>

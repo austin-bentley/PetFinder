@@ -3,8 +3,8 @@
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
-  * Create new postgres super user with `createuser --interactive --pwprompt`, name and password should be `postgres`
-  * Create and migrate your database with `mix ecto.setup`
+  * Start postgres with `docker-compose up`
+  * Create, migrate, and seed your database with `mix setup`
   * Install Node.js dependencies with `cd assets && npm install`
   * Start Phoenix endpoint with `mix phx.server`
 

@@ -13,7 +13,7 @@ defmodule PetFinderWeb.ErrorView do
       status: assigns.conn.status,
       conn: assigns.conn
     }
-    render(PetFinderWeb.ErrorView, "404.html", error_data)
+    render(PetFinderWeb.ErrorView, "error.html", error_data)
   end
 
   # By default, Phoenix returns the status message from
