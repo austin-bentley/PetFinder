@@ -8,7 +8,7 @@ Repo.insert!(%Animal{
 })
 
 Repo.insert!(%Animal{
-  color: ["orange, black, white"],
+  color: ["orange", "black", "white"],
   species: "Cat",
   user_id: 1
 })
