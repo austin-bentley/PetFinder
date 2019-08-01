@@ -13,7 +13,7 @@ defmodule PetFinder.Pet.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:description, :status])
+    |> cast(attrs, [:description, :status, :animal_id])
     |> validate_required([:description, :status])
   end
 end

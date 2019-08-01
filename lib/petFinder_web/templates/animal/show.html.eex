@@ -21,14 +21,18 @@
   </li>
 
 </ul>
-
+<hr />
 <div class="post-container">
   <h2>Posts about this pet</h2>
+  <hr />
   <%= for post <- @posts do %>
     <h3>Animal Status: <%= String.capitalize(post.status) %> </h3>
     <h4>Additional Information:</h4>
     <span><%= post.description %> </span>
+    <hr />
   <% end %>
 </div>
+
+<span><%= button "New Post", to: Routes.user_animal_post_path(@conn, :new, @conn.assigns.user_id, @animal.id), method: :get %></span>
 
 

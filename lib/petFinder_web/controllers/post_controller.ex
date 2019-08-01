@@ -9,17 +9,20 @@ defmodule PetFinderWeb.PostController do
   #   render(conn, "index.html", posts: posts)
   # end
 
-  def new(conn, _params) do
+  def new(conn, params) do
     changeset = Pet.change_post(%Post{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, animal_id: params["animal_id"])
   end
 
   def create(conn, %{"post" => post_params}) do
+    animal_id_map = %{"animal_id" => conn.params["animal_id"]}
+    post_params = Map.merge(post_params, animal_id_map)
+    IO.inspect(post_params, label: ">>>")
     case Pet.create_post(post_params) do
       {:ok, _post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: Routes.user_path(conn, :show, conn.assigns.user_id))
+        |> redirect(to: Routes.user_animal_path(conn, :show, conn.assigns.user_id, conn.params["animal_id"]))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
