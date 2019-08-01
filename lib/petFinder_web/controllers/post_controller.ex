@@ -17,7 +17,6 @@ defmodule PetFinderWeb.PostController do
   def create(conn, %{"post" => post_params}) do
     animal_id_map = %{"animal_id" => conn.params["animal_id"]}
     post_params = Map.merge(post_params, animal_id_map)
-    IO.inspect(post_params, label: ">>>")
     case Pet.create_post(post_params) do
       {:ok, _post} ->
         conn

@@ -10,7 +10,7 @@
   <%= error_tag f, :species %>
 
   <%= label f, :color %>
-  <%= multiple_select f, :color, ["Black": 1, "brown": 2, "White": 3] %>
+  <%= text_input f, :color, placeholder: "List all colors separated by spaces"%>
   <%= error_tag f, :color %>
 
   <%= label f, :location %>

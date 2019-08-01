@@ -10,7 +10,7 @@
   <%= error_tag f, :description %>
 
   <%= label f, :status %>
-  <%= select(f, :status, ["Lost animal": 1, "Found animal": 2, "Needs home": 3], selected: [1]) %>
+  <%= select(f, :status, ["Lost animal": "Lost", "Found animal": "Found", "Needs home": "Needs home"], selected: ["Lost"]) %>
   <%= error_tag f, :status %>
 
   <div>

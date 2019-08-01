@@ -15,7 +15,10 @@ defmodule PetFinderWeb.AnimalController do
   end
 
   def create(conn, %{"animal" => animal_params}) do
-    animal_params = Map.merge(animal_params, %{"user_id" => conn.assigns.user_id})
+    animal_params =
+      Map.merge(animal_params, %{"user_id" => conn.assigns.user_id})
+      |> Map.update!("color", &(String.split(&1)))
+
     case Pet.create_animal(animal_params) do
       {:ok, _animal} ->
         conn
