@@ -4,12 +4,17 @@
 </section>
 
 <section class="column">
-  <article class="row">
-    <h2>Search for a lost pet</h2>
-  </article>
-  <article class="row">
-    <h2>Report a found pet</h2>
-  </article>
+  <h2>Search for a lost pet</h2>
+
+  <div class="card-container">
+    <%= for post <- @recently_lost do %>
+      <div class="card">
+        <%= link post.description , to: Routes.user_animal_path(@conn, :show, @conn.assigns.user_id, post.animal_id), class: "card-text" %>
+      </div>
+    <% end %>
+  </div>
+
+  <h2>Report a found pet</h2>
   <%# <article class="column">
     <h2>Resources</h2>
     <ul>

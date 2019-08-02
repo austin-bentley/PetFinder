@@ -32,6 +32,14 @@ defmodule PetFinder.Pet do
     Repo.all(query)
   end
 
+  def get_recently_lost_animals!() do
+    Post
+    |> where([p], p.status == "Lost")
+    |> order_by(desc: :updated_at)
+    |> limit(3)
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single animal.
 
