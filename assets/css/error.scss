@@ -1,9 +1,51 @@
-.hero-image {
-
-}
-
-h1 {
+div.error-page {
     font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
     font-weight: 500;
-    font-size: 80;
+    img.hero-image {
+        max-width: 100vw;
+        margin-left: -8px;
+        margin-top: -8px;
+    }
+    div.text-container {
+        margin: 24px;
+        h1.status-code {
+            font-size: 80;
+            line-height: 1;
+        }
+        
+        h1.message {
+            font-size: 50;
+            color: #aaa;
+        }
+        
+        p.text {
+            margin: 0;
+        }
+        
+    }
+    div.post-container {
+        margin: 24px;
+        p.text {
+            font-size: 24px;
+        }
+        div.card-container {
+            display: flex;
+            div.card {
+                width: 140px;
+                height: 100px;
+                margin: 8px;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                transition: box-shadow .25s;
+                border-radius: 2px;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+                a.card-text {
+                    padding-left: 12px;
+                    display: block;
+                }
+            }
+        }
+    }
 }

@@ -7,6 +7,7 @@ defmodule PetFinder.Pet do
   alias PetFinder.Repo
 
   alias PetFinder.Pet.Animal
+  alias PetFinder.Pet.Post
 
   @doc """
   Returns the list of animals.
@@ -19,6 +20,10 @@ defmodule PetFinder.Pet do
   """
   def list_animals do
     Repo.all(Animal)
+  end
+
+  def list_posts do
+    Repo.all(Post)
   end
 
   def get_user_animals!(id) do

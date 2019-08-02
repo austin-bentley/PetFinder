@@ -1,5 +1,20 @@
 <link rel="stylesheet" href="/css/app.css">
-<img src="<%= Routes.static_path(@conn, "/images/Lost-Pet-Header-Image.jpg")%>" class="hero-image">
-<h1><%= @message %></h1>
-<h1><%= @status %></h1>
+<div class="error-page">
+    <img src="<%= Routes.static_path(@conn, "/images/Lost-Pet-Header-Image.jpg")%>" class="hero-image">
+    <div class="text-container">
+        <p class="text">ERROR:</p>
+        <h1 class="status-code"><%= @status %></h1>
+        <h1 class="message"><%= @message %></h1>
+    </div>
+    <div class="post-container">
+        <p class="text">Check out some of these!</p>
+        <div class="card-container">
+            <%= for post <- @posts do %>
+                <div class="card">
+                    <%= link post.description, to: Routes.user_animal_path(@conn, :show, @conn.assigns.user_id, post.animal_id), class: "card-text" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
 <script src="/js/app.js"></script>

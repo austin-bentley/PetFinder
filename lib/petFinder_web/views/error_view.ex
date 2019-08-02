@@ -1,6 +1,8 @@
 defmodule PetFinderWeb.ErrorView do
   use PetFinderWeb, :view
   use Phoenix.Endpoint, otp_app: :petFinder
+
+  alias PetFinder.Pet
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
   def render("500.html", _assigns) do
@@ -11,7 +13,8 @@ defmodule PetFinderWeb.ErrorView do
     error_data = %{
       message: "Oops something went wrong",
       status: assigns.conn.status,
-      conn: assigns.conn
+      conn: assigns.conn,
+      posts: Pet.list_posts
     }
     render(PetFinderWeb.ErrorView, "error.html", error_data)
   end
