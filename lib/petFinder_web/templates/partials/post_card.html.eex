@@ -1,0 +1,3 @@
+<div class="card">
+    <%= link @post.description, to: Routes.user_animal_path(@conn, :show, @conn.assigns.user_id, @post.animal_id), class: "card-text" %>
+</div>

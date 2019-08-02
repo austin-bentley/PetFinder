@@ -7,19 +7,11 @@
   <h2>Recently lost pets:</h2>
 
   <div class="card-container">
-    <%= for post <- @recently_lost_animals do %>
-      <div class="card">
-        <%= link post.description , to: Routes.user_animal_path(@conn, :show, @conn.assigns.user_id, post.animal_id), class: "card-text" %>
-      </div>
-    <% end %>
+    <%= render_many @recently_lost_animals, PetFinderWeb.PartialsView, "post_card.html", as: :post, conn: @conn %>
   </div>
 
   <h2>Recently found pets:</h2>
     <div class="card-container">
-      <%= for post <- @recently_found_animalsss do %>
-        <div class="card">
-          <%= link post.description , to: Routes.user_animal_path(@conn, :show, @conn.assigns.user_id, post.animal_id), class: "card-text" %>
-        </div>
-      <% end %>
+      <%= render_many @recently_found_animals, PetFinderWeb.PartialsView, "post_card.html", as: :post, conn: @conn %>
     </div>
 </section>

@@ -1,3 +1,17 @@
-.details-list {
-    margin: 8px 0 0;
+h1.animal-details-title {
+    margin: 0;
+    font-weight: 500;
+}
+
+ul.details-list {
+    margin: 0;
+    li {
+        display: inline;
+        padding: 12px;
+        font-weight: 500;
+    }
+}
+
+div.animal-details-actions {
+    padding-left: 12px;
 }

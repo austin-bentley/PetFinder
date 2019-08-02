@@ -9,11 +9,7 @@
     <div class="post-container">
         <p class="text">Check out some of these!</p>
         <div class="card-container">
-            <%= for post <- @posts do %>
-                <div class="card">
-                    <%= link post.description, to: Routes.user_animal_path(@conn, :show, @conn.assigns.user_id, post.animal_id), class: "card-text" %>
-                </div>
-            <% end %>
+            <%= render_many @posts, PetFinderWeb.PartialsView, "post_card.html", as: :post, conn: @conn %>
         </div>
     </div>
 </div>
