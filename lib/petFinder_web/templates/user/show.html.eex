@@ -13,4 +13,6 @@
             </tr>
         <% end %>
     </table>
+
+    <span><%= link "Back", to: Routes.page_path(@conn, :index)%></span>
 </div>

@@ -4,10 +4,10 @@ defmodule PetFinderWeb.AnimalController do
   alias PetFinder.Pet
   alias PetFinder.Pet.Animal
 
-  # def index(conn, _params) do
-  #   animals = Pet.list_animals()
-  #   render(conn, "index.html", animals: animals)
-  # end
+  def index(conn, _params) do
+    animals = Pet.list_animals()
+    render(conn, "index.html", animals: animals)
+  end
 
   def new(conn, _params) do
     changeset = Pet.change_animal(%Animal{})

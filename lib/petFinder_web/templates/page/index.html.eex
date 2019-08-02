@@ -1,5 +1,5 @@
 <section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "PetFinder" %></h1>
+  <h1><%= gettext "Welcome to %{name}!", name: "Pet Finder" %></h1>
   <p>Helping pets find their way home safe.</p>
 </section>
 
@@ -11,7 +11,17 @@
   </div>
 
   <h2>Recently found pets:</h2>
-    <div class="card-container">
-      <%= render_many @recently_found_animals, PetFinderWeb.PartialsView, "post_card.html", as: :post, conn: @conn %>
-    </div>
+  <div class="card-container">
+    <%= render_many @recently_found_animals, PetFinderWeb.PartialsView, "post_card.html", as: :post, conn: @conn %>
+  </div>
+
+  <article class="row">
+    <h2>Search for a lost pet</h2>
+  </article>
+
+  <span><%= button "View All Animals", to: Routes.user_animal_path(@conn, :index, @conn.assigns.user_id), method: :get %></span>
+  <article class="row">
+    <h2>Report a found pet</h2>
+  </article>
+  <span><%= button "New Animal", to: Routes.user_animal_path(@conn, :new, @conn.assigns.user_id), method: :get %></span>
 </section>

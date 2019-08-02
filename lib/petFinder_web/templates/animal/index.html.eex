@@ -1,0 +1,15 @@
+<h1>View All Animals</h1>
+
+<div class="user-body">
+    <table>
+        <%= for animal <- @animals do %>
+            <tr>
+                <td><%= animal.species %> </td>
+                <td><%= Enum.join(animal.color, ", ") %></td>
+                <td><%= link "Details", to: Routes.user_animal_path(@conn, :show, @conn.assigns.user_id, animal.id) %></td>
+            </tr>
+        <% end %>
+    </table>
+
+    <span><%= link "Back", to: Routes.page_path(@conn, :index)%></span>
+</div>
