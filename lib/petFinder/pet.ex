@@ -40,6 +40,14 @@ defmodule PetFinder.Pet do
     |> Repo.all()
   end
 
+  def get_recently_found_animals!() do
+    Post
+    |> where([p], p.status == "Found")
+    |> order_by(desc: :updated_at)
+    |> limit(3)
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single animal.
 

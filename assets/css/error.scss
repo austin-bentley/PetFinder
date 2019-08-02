@@ -30,6 +30,7 @@ div.error-page {
         }
         div.card-container {
             display: flex;
+            flex-wrap: wrap;
             div.card {
                 width: 140px;
                 height: 100px;

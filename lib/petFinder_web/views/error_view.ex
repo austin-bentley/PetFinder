@@ -5,18 +5,24 @@ defmodule PetFinderWeb.ErrorView do
   alias PetFinder.Pet
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
-  def render("500.html", _assigns) do
-    "Internal Server Error"
+  def render("500.html", assigns) do
+    render(PetFinderWeb.ErrorView,
+      "error.html",
+      message: "It's raining cats and dogs over here! Please give us some time to sort this out",
+      status: assigns.conn.status,
+      conn: assigns.conn,
+      posts: Pet.list_posts
+    )
   end
 
   def render("404.html", assigns) do
-    error_data = %{
+    render(PetFinderWeb.ErrorView,
+      "error.html",
       message: "Oops something went wrong",
       status: assigns.conn.status,
       conn: assigns.conn,
       posts: Pet.list_posts
-    }
-    render(PetFinderWeb.ErrorView, "error.html", error_data)
+    )
   end
 
   # By default, Phoenix returns the status message from
