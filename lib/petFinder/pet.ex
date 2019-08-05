@@ -44,6 +44,43 @@ defmodule PetFinder.Pet do
     |> Repo.all()
   end
 
+  def get_posts_near_user(user_id) do
+    one = get_zip_codes(user_id)
+    |> query_nearby_zip_codes()
+    IO.inspect(one, label: "oneeee")
+    one
+  end
+
+  defp query_nearby_zip_codes(zip_list) do
+    one = Repo.all(Animal)
+      |> where([a], a.location in ^zip_list)
+    IO.inspect(one, label: "OOOOOOOO")
+    one
+  end
+
+  defp get_zip_codes(user_id) do
+    get_animal!(user_id)
+    |> Map.get(:location, "")
+    |> nearby_zips_request()
+    |> format_zips_into_list()
+  end
+
+  defp nearby_zips_request(zip) do
+    case HTTPoison.get("https://www.zipcodeapi.com/rest/xViDTqMu89M34fHGfguSlO0VPpVkXEulf9uZ1yMvBbsOR4d8h0HfJCiv5m8XUyTd/radius.json/#{zip}/4/mile") do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+        Poison.decode!(body)
+      {:ok, %HTTPoison.Response{status_code: 404}} ->
+        IO.inspect(label: "ERROR: No zip codes found!")
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        IO.inspect(reason, label: "ERROR: ")
+    end
+  end
+
+  defp format_zips_into_list(request_body) do
+    request_body["zip_codes"]
+    |> Enum.map_join(& &1["zip_code"], "")
+  end
+
   @doc """
   Gets a single animal.
 

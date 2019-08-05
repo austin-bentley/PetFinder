@@ -40,3 +40,7 @@
     <% end %>
   </section>
 
+  <h2>Posts near you</h2>
+
+<% end %>
+
