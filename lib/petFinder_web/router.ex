@@ -19,7 +19,7 @@ defmodule PetFinderWeb.Router do
 
 
     resources "/user", UserController, only: [:show, :edit, :delete] do
-      resources "/animals", AnimalController do
+      resources "/animals", AnimalController, except: [:show] do
         resources "/posts", PostController, only: [:create, :new, :delete, :edit]
       end
     end
@@ -40,6 +40,7 @@ defmodule PetFinderWeb.Router do
     pipe_through [:browser, PetFinderWeb.Plugs.Shared]
 
     get "/", PageController, :index
+    get "/user/:user_id/animals/:id", AnimalController, :show
   end
 
   # Other scopes may use custom stacks.

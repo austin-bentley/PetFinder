@@ -31,9 +31,12 @@ defmodule PetFinderWeb.AnimalController do
   end
 
   def show(conn, %{"id" => id}) do
-    animal = Pet.get_animal!(id)
-    posts = Pet.get_animal_posts(id)
-    render(conn, "show.html", animal: animal, posts: posts)
+    render(
+      conn,
+      "show.html",
+      animal: Pet.get_animal!(id),
+      posts: Pet.get_animal_posts(id)
+    )
   end
 
   def edit(conn, %{"id" => id}) do

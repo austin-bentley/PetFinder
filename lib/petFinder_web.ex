@@ -42,6 +42,7 @@ defmodule PetFinderWeb do
       import PetFinderWeb.ErrorHelpers
       import PetFinderWeb.Gettext
       import PetFinderWeb.Helpers.Auth
+      import PetFinderWeb.Helpers.Pet
       alias PetFinderWeb.Router.Helpers, as: Routes
     end
   end

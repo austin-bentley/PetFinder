@@ -3,25 +3,40 @@
   <p>Helping pets find their way home safe.</p>
 </section>
 
-<section class="column">
-  <h2>Recently lost pets:</h2>
+    <h2>Recently lost pets:</h2>
+    <div class="card-container">
+      <%= render_many(
+        @recently_lost_animals, 
+        PetFinderWeb.PartialsView, 
+        "post_card.html", 
+        as: :post, 
+        conn: @conn
+      )%>
+    </div>
 
-  <div class="card-container">
-    <%= render_many @recently_lost_animals, PetFinderWeb.PartialsView, "post_card.html", as: :post, conn: @conn %>
-  </div>
+    <h2>Recently found pets:</h2>
+    <div class="card-container">
+      <%= render_many(
+        @recently_found_animals, 
+        PetFinderWeb.PartialsView, 
+        "post_card.html", 
+        as: :post, 
+        conn: @conn
+      )%>
+    </div>
 
-  <h2>Recently found pets:</h2>
-  <div class="card-container">
-    <%= render_many @recently_found_animals, PetFinderWeb.PartialsView, "post_card.html", as: :post, conn: @conn %>
-  </div>
+<%= if signed_in?(@conn) do %>
+  <section class="column">
 
-  <article class="row">
-    <h2>Search for a lost pet</h2>
-  </article>
+    <article class="row">
+      <h2>Search for a lost pet</h2>
+    </article>
+    <span><%= button "View Your Animals", to: Routes.user_animal_path(@conn, :index, @conn.assigns.user_id), method: :get %></span>
 
-  <span><%= button "View All Animals", to: Routes.user_animal_path(@conn, :index, @conn.assigns.user_id), method: :get %></span>
-  <article class="row">
-    <h2>Report a found pet</h2>
-  </article>
-  <span><%= button "New Animal", to: Routes.user_animal_path(@conn, :new, @conn.assigns.user_id), method: :get %></span>
-</section>
+    <article class="row">
+      <h2>Report a found pet</h2>
+    </article>
+    <span><%= button "New Animal", to: Routes.user_animal_path(@conn, :new, @conn.assigns.user_id) %></span>
+  </section>
+<% end %>
+
