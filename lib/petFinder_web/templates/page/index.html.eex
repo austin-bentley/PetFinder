@@ -31,12 +31,12 @@
     <article class="row">
       <h2>Search for a lost pet</h2>
     </article>
-    <span><%= button "View Your Animals", to: Routes.user_animal_path(@conn, :index, @conn.assigns.user_id), method: :get %></span>
+    <span><%= button "View All Animals", to: Routes.user_animal_path(@conn, :index, @conn.assigns.user_id), method: :get %></span>
 
     <article class="row">
       <h2>Report a found pet</h2>
     </article>
-    <span><%= button "New Animal", to: Routes.user_animal_path(@conn, :new, @conn.assigns.user_id) %></span>
+    <span><%= button "New Animal", to: Routes.user_animal_path(@conn, :new, @conn.assigns.user_id), method: :get%></span>
   </section>
 <% end %>
 

@@ -19,8 +19,8 @@
   <%= if @conn.assigns.user_id == @animal.user_id do %>
     <span><%= link "Edit", to: Routes.user_animal_path(@conn, :edit, @conn.assigns.user_id, @animal.id) %> | </span>
     <span><%= link "My animals", to: Routes.user_path(@conn, :show, @conn.assigns.user_id) %> | </span>
-    <span><%= link "Back to all animals", to: Routes.user_animal_path(@conn, :index, @conn.assigns.user_id) %> </span>
   <% end %>
+    <span><%= link "Back to all animals", to: Routes.user_animal_path(@conn, :index, @conn.assigns.user_id) %> </span>
 <% end %>
 
 <hr />

@@ -21,7 +21,7 @@ defmodule PetFinderWeb.PostController do
       {:ok, _post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: Routes.user_animal_path(conn, :show, conn.assigns.user_id, conn.params["animal_id"]))
+        |> redirect(to: Routes.animal_path(conn, :show, conn.assigns.user_id, conn.params["animal_id"]))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
