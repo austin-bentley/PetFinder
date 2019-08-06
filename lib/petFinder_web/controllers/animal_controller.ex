@@ -47,12 +47,17 @@ defmodule PetFinderWeb.AnimalController do
 
   def update(conn, %{"id" => id, "animal" => animal_params}) do
     animal = Pet.get_animal!(id)
+    animal_params = Map.merge(
+      animal_params,
+      %{"color" => String.split(animal_params["color"], " ")
+      }
+    )
 
     case Pet.update_animal(animal, animal_params) do
       {:ok, animal} ->
         conn
         |> put_flash(:info, "Animal updated successfully.")
-        |> redirect(to: Routes.user_animal_path(conn, :show, conn.assigns.user_id, animal.id))
+        |> redirect(to: Routes.animal_path(conn, :show, conn.assigns.user_id, animal.id))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", animal: animal, changeset: changeset)

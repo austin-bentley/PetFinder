@@ -22,10 +22,6 @@ defmodule PetFinder.Pet do
     Repo.all(Animal)
   end
 
-  def list_posts do
-    Repo.all(Post)
-  end
-
   def get_user_animals!(id) do
     id = String.to_integer(id)
     query = from a in "animals", where: a.user_id == ^id, select: [:id, :species, :color], order_by: [:id]
@@ -95,6 +91,7 @@ defmodule PetFinder.Pet do
 
   """
   def update_animal(%Animal{} = animal, attrs) do
+    IO.inspect(attrs, label: ">>>")
     animal
     |> Animal.changeset(attrs)
     |> Repo.update()

@@ -7,7 +7,7 @@
   </li>
   <li>
     <strong>Color:</strong>
-    <%= @animal.color %>
+    <%= Enum.join(@animal.color, ", ") %>
   </li>
   <li>
     <strong>Location:</strong>
