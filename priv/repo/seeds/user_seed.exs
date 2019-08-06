@@ -19,3 +19,9 @@ Repo.insert! %User {
   encrypted_password: Bcrypt.hashpwsalt("cars3"),
   zip_code: "87111"
 }
+
+Repo.insert! %User {
+  username: "User4!",
+  encrypted_password: Bcrypt.hashpwsalt("cars4"),
+  zip_code: "60290"
+}

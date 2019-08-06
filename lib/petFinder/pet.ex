@@ -8,6 +8,7 @@ defmodule PetFinder.Pet do
 
   alias PetFinder.Pet.Animal
   alias PetFinder.Pet.Post
+  alias PetFinder.Account
 
   @doc """
   Returns the list of animals.
@@ -44,28 +45,31 @@ defmodule PetFinder.Pet do
     |> Repo.all()
   end
 
+  def get_posts_near_user(nil), do: nil
   def get_posts_near_user(user_id) do
-    one = get_zip_codes(user_id)
-    |> query_nearby_zip_codes()
-    |> get_posts_by_animal()
-    IO.inspect(one, label: "RRRRRRRRRRRRRR")
-    one
+    get_zip_codes(user_id)
+    |> get_user_ids_by_zip_codes()
+    |> get_most_recent_post_by_animal()
   end
 
-  defp query_nearby_zip_codes(zip_list) do
+  defp get_user_ids_by_zip_codes(zip_list) do
     Animal
-      |> where([a], a.location in ^zip_list)
-      |> Repo.all()
+    |> where([a], a.location in ^zip_list)
+    |> select([a], a.user_id)
+    |> Repo.all()
   end
 
-  def get_posts_by_animal(_animals) do
-    Animal
-    |> Ecto.assoc(:id)
+  def get_most_recent_post_by_animal(user_id_list) do
+    Post
+    |> where([p], p.animal_id in ^user_id_list)
+    |> order_by(desc: :updated_at)
+    |> distinct(desc: :animal_id)
+    |> Repo.all()
   end
 
   defp get_zip_codes(user_id) do
-    get_animal!(user_id)
-    |> Map.get(:location, "")
+    Account.get_user!(user_id)
+    |> Map.get(:zip_code, "")
     |> nearby_zips_request()
     |> format_zips_into_list()
   end
@@ -133,7 +137,6 @@ defmodule PetFinder.Pet do
 
   """
   def update_animal(%Animal{} = animal, attrs) do
-    IO.inspect(attrs, label: ">>>")
     animal
     |> Animal.changeset(attrs)
     |> Repo.update()
