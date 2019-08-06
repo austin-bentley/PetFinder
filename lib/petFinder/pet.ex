@@ -91,7 +91,6 @@ defmodule PetFinder.Pet do
 
   """
   def update_animal(%Animal{} = animal, attrs) do
-    IO.inspect(attrs, label: ">>>")
     animal
     |> Animal.changeset(attrs)
     |> Repo.update()

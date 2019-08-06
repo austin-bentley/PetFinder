@@ -1,6 +1,7 @@
 defmodule PetFinder.Pet.Animal do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
 
   schema "animals" do
     field :color, {:array, :string}

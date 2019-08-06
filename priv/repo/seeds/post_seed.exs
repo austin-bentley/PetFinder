@@ -8,6 +8,12 @@ Repo.insert!(%Post{
 })
 
 Repo.insert!(%Post{
+  animal_id: 1,
+  description: "7 year old boy dog",
+  status: "Lost"
+})
+
+Repo.insert!(%Post{
   animal_id: 2,
   description: "Small calico cat, very noisy and hates everone.",
   status: "Found"
@@ -16,6 +22,12 @@ Repo.insert!(%Post{
 Repo.insert!(%Post{
   animal_id: 3,
   description: "Frodo the dogo",
+  status: "Lost"
+})
+
+Repo.insert!(%Post{
+  animal_id: 3,
+  description: "Frodo not the dogo",
   status: "Lost"
 })
 

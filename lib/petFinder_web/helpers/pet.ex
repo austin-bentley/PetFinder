@@ -11,4 +11,7 @@ defmodule PetFinderWeb.Helpers.Pet do
     |> Repo.all()
     |> List.first()
   end
+
+  def is_empty?([]), do: true
+  def is_empty?(_list), do: false
 end

@@ -37,6 +37,22 @@
         <h2>Report a found pet</h2>
       </article>
       <span><%= button "New Animal", to: Routes.animal_path(@conn, :new), method: :get%></span>
+
+      <h2>Posts near you</h2>
+      <div class="card-container">
+        <%= if is_empty?(@posts_near_user) do %>
+          <p>Sorry, couldn't find any near you!</p>
+        <% else %>
+          <%= render_many(
+            @posts_near_user, 
+            PetFinderWeb.PartialsView, 
+            "post_card.html", 
+            as: :post, 
+            conn: @conn
+          )%>
+        <% end %>
+      </div>
     <% end %>
   </section>
+
 
