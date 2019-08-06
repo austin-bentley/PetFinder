@@ -41,6 +41,14 @@
   </section>
 
   <h2>Posts near you</h2>
-
+  <div class="card-container">
+    <%#= render_many(
+      @get_posts_near_user, 
+      PetFinderWeb.PartialsView, 
+      "post_card.html", 
+      as: :post, 
+      conn: @conn
+    )%>
+  </div>
 <% end %>
 

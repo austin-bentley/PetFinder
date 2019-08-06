@@ -10,7 +10,7 @@ defmodule PetFinderWeb.PageController do
       user_id: user_id,
       recently_lost_animals: Pet.get_recently_lost_animals!(),
       recently_found_animals: Pet.get_recently_found_animals!(),
-      # posts_near_user: Pet.get_posts_near_user(user_id)
+      posts_near_user: Pet.get_posts_near_user(user_id)
     )
   end
 end

@@ -47,15 +47,20 @@ defmodule PetFinder.Pet do
   def get_posts_near_user(user_id) do
     one = get_zip_codes(user_id)
     |> query_nearby_zip_codes()
-    IO.inspect(one, label: "oneeee")
+    |> get_posts_by_animal()
+    IO.inspect(one, label: "RRRRRRRRRRRRRR")
     one
   end
 
   defp query_nearby_zip_codes(zip_list) do
-    one = Repo.all(Animal)
+    Animal
       |> where([a], a.location in ^zip_list)
-    IO.inspect(one, label: "OOOOOOOO")
-    one
+      |> Repo.all()
+  end
+
+  def get_posts_by_animal(_animals) do
+    Animal
+    |> Ecto.assoc(:id)
   end
 
   defp get_zip_codes(user_id) do
@@ -78,7 +83,7 @@ defmodule PetFinder.Pet do
 
   defp format_zips_into_list(request_body) do
     request_body["zip_codes"]
-    |> Enum.map_join(& &1["zip_code"], "")
+    |> Enum.map(& &1["zip_code"])
   end
 
   @doc """
