@@ -1,11 +1,9 @@
 <div class="card">
-    <% id = get_user_id_by_animal_id(@post.animal_id) %>
     <%= link(
         @post.description, 
         to: Routes.animal_path(
             @conn, 
             :show, 
-            id, 
             @post.animal_id
         ),
         class: "card-text" 

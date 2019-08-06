@@ -1,6 +1,6 @@
 <div class="user-header">
     <h1>User</h1>
-    <%= button "New Animal", to: Routes.user_animal_path(@conn, :new, @conn.assigns.user_id), method: :get %> 
+    <%= button "New Animal", to: Routes.animal_path(@conn, :new), method: :get %> 
 </div>
 
 <div class="user-body">

@@ -1,5 +1,5 @@
 <h1>New Animal</h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.user_animal_path(@conn, :create, @conn.assigns.user_id)) %>
+<%= render "form.html", Map.put(assigns, :action, Routes.animal_path(@conn, :create)) %>
 
-<span><%= link "Back", to: Routes.user_path(@conn, :show, @conn.assigns.user_id) %></span>
+<span><%#= link "Back", to: Routes.user_path(@conn, :show, @conn.assigns.user_id) %></span>

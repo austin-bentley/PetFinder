@@ -18,10 +18,9 @@ defmodule PetFinderWeb.Router do
     pipe_through [:browser, PetFinderWeb.Plugs.Auth]
 
 
-    resources "/user", UserController, only: [:show, :edit, :delete] do
-      resources "/animals", AnimalController, except: [:show] do
-        resources "/posts", PostController, only: [:create, :new, :delete, :edit]
-      end
+    resources "/user", UserController, only: [:edit, :delete]
+    resources "/animals", AnimalController, except: [:show, :index] do
+      resources "/posts", PostController, only: [:create, :new, :delete, :edit]
     end
     delete "/sign-out", SessionController, :delete
   end
@@ -35,12 +34,16 @@ defmodule PetFinderWeb.Router do
     post "/sign-in", SessionController, :create
   end
 
-  #auth routes
+  #Shared routes
   scope "/", PetFinderWeb do
     pipe_through [:browser, PetFinderWeb.Plugs.Shared]
 
     get "/", PageController, :index
     get "/user/:user_id/animals/:id", AnimalController, :show
+
+    resources "/user", UserController, only: [:index, :show]
+    resources "/animals", AnimalController, only: [:show, :index]
+
   end
 
   # Other scopes may use custom stacks.

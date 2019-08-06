@@ -25,18 +25,18 @@
       )%>
     </div>
 
-<%= if signed_in?(@conn) do %>
+
   <section class="column">
 
     <article class="row">
       <h2>Search for a lost pet</h2>
     </article>
-    <span><%= button "View All Animals", to: Routes.user_animal_path(@conn, :index, @conn.assigns.user_id), method: :get %></span>
-
-    <article class="row">
-      <h2>Report a found pet</h2>
-    </article>
-    <span><%= button "New Animal", to: Routes.user_animal_path(@conn, :new, @conn.assigns.user_id), method: :get%></span>
+    <span><%= button "View All Animals", to: Routes.animal_path(@conn, :index), method: :get %></span>
+    <%= if signed_in?(@conn) do %>
+      <article class="row">
+        <h2>Report a found pet</h2>
+      </article>
+      <span><%= button "New Animal", to: Routes.animal_path(@conn, :new), method: :get%></span>
+    <% end %>
   </section>
-<% end %>
 
