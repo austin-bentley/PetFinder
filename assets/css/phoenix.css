@@ -112,7 +112,7 @@ header nav {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 190px;
+  width: 140px;
 }
 header nav ul,
 header nav li {
