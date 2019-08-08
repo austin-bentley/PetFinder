@@ -47,7 +47,8 @@ defmodule PetFinder.MixProject do
       {:bcrypt_elixir, "~> 1.0"},
       {:floki, "~> 0.21.0"},
       {:httpoison, "~> 1.5"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:arc_ecto, "~> 0.11.1"}
     ]
   end
 

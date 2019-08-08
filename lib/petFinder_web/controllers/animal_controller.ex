@@ -10,7 +10,9 @@ defmodule PetFinderWeb.AnimalController do
   end
 
   def new(conn, _params) do
-    changeset = Pet.change_animal(%Animal{})
+    changeset = Pet.change_animal(%Animal{
+      images: [%PetFinder.Pet.Image{}]
+    })
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -35,7 +37,8 @@ defmodule PetFinderWeb.AnimalController do
       conn,
       "show.html",
       animal: Pet.get_animal!(id),
-      posts: Pet.get_animal_posts(id)
+      posts: Pet.get_animal_posts(id),
+      images: Pet.get_images_by_animal(id)
     )
   end
 

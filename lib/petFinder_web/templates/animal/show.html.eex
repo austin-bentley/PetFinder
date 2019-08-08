@@ -23,6 +23,10 @@
 <% end %>
 <span><%= link "Back to all animals", to: Routes.animal_path(@conn, :index) %> </span>
 
+<h2>Pictures:</h2>
+<%= for image <- @images do %>
+  <img src="<%= PetFinder.ImageUploader.url({image.image, image})%>" class="animal-image"><br>
+<% end %>
 <hr />
 
 <div class="post-container">

@@ -1,13 +1,13 @@
 defmodule PetFinder.Pet.Animal do
   use Ecto.Schema
   import Ecto.Changeset
-  import Ecto.Query
 
   schema "animals" do
     field :color, {:array, :string}
     field :location, :string
     field :species, :string
     field :user_id, :id
+    has_many :images, PetFinder.Pet.Image
 
     timestamps()
   end
