@@ -14,11 +14,11 @@
       </section>
       <nav role="navigation">
         <%= if signed_in?(@conn) do %>
-          <%= link "My Profile", to: Routes.user_path(@conn, :show, @conn.assigns.user_id) %>
+          <%= button "View my animals", to: Routes.user_path(@conn, :show, @conn.assigns.user_id), method: :get %>
           <%= button "Sign out", to: Routes.session_path(@conn, :delete), method: :delete %>
         <% else %>
           <%= unless is_route_sign_in_or_up(@conn) do %>
-            <%= link "Sign In", to: Routes.session_path(@conn, :new) %> 
+            <%= link "Sign in", to: Routes.session_path(@conn, :new) %> 
             | 
             <%= link "Sign up", to: Routes.user_path(@conn, :new) %>
           <% end %>

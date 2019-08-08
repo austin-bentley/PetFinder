@@ -5,14 +5,14 @@
 
 <div class="user-body">
     <table>
-        <%= for animal <- @animals do %>
-            <tr>
-                <td><%= animal.species %> </td>
-                <td><%= Enum.join(animal.color, ", ") %></td>
-                <td><%= link "Details", to: Routes.animal_path(@conn, :show, @conn.assigns.user_id, animal.id) %></td>
-            </tr>
-        <% end %>
+        <%= render_many(
+            @animals,
+            PetFinderWeb.PartialsView,
+            "animal_card.html",
+            as: :post,
+            conn: @conn
+        )%>
     </table>
 
-    <span><%= link "Back", to: Routes.page_path(@conn, :index)%></span>
+    <span><%= link "Back", to: Routes.page_path(@conn, :index), method: :get%></span>
 </div>

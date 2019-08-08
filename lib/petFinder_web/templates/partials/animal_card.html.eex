@@ -1,0 +1,6 @@
+
+<tr>
+  <td><%= @post.species %> </td>
+  <td><%= Enum.join(@post.color, ", ") %></td>
+  <td><%= link "Details", to: Routes.animal_path(@conn, :show, @post.id) %></td>
+</tr>

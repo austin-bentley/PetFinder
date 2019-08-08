@@ -1,14 +1,14 @@
 <h1>View All Animals</h1>
 
-<div class="user-body">
+<div class="animal-list__body">
     <table>
-        <%= for animal <- @animals do %>
-            <tr>
-                <td><%= animal.species %> </td>
-                <td><%= Enum.join(animal.color, ", ") %></td>
-                <td><%= link "Details", to: Routes.animal_path(@conn, :show, animal.id) %></td>
-            </tr>
-        <% end %>
+        <%= render_many(
+            @animals,
+            PetFinderWeb.PartialsView,
+            "animal_card.html",
+            as: :post,
+            conn: @conn
+        )%>
     </table>
 
     <span><%= link "Back", to: Routes.page_path(@conn, :index)%></span>
