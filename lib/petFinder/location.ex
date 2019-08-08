@@ -4,13 +4,14 @@ defmodule PetFinder.Location do
 
   alias PetFinder.Pet.Animal
   alias PetFinder.Pet.Post
+  alias PetFinder.Pet.Image
   alias PetFinder.Account
 
   def get_posts_near_user(nil), do: nil
   def get_posts_near_user(user_id) do
     get_zip_codes(user_id)
     |> get_user_ids_by_zip_codes()
-    |> get_most_recent_post_by_animal()
+    |> get_most_recent_post_by_animal_with_image()
   end
 
   defp get_user_ids_by_zip_codes(zip_list) do
@@ -19,12 +20,13 @@ defmodule PetFinder.Location do
     |> select([a], a.user_id)
     |> Repo.all()
   end
-
-  def get_most_recent_post_by_animal(user_id_list) do
+  def get_most_recent_post_by_animal_with_image(user_id_list) do
     Post
     |> where([p], p.animal_id in ^user_id_list)
     |> order_by(desc: :updated_at)
     |> distinct(desc: :animal_id)
+    |> join(:inner, [p], i in Image, on: p.animal_id == i.animal_id)
+    |> select([p,i], %{description: p.description, animal_id: p.animal_id, image: i.image})
     |> Repo.all()
   end
 

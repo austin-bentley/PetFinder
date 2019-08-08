@@ -2,3 +2,35 @@ div.card-container {
     display: flex;
     flex-wrap: wrap;
 }
+
+div.hero-image-container {
+    width: 100vw;
+    margin-left: calc(-10% + 8px);
+    height: 500px;
+    overflow: hidden;
+    img {
+        margin-top: -84px;
+    }
+}
+
+.phx-hero {
+    text-align: center;
+    border-bottom: 1px solid #e3e3e3;
+    background: #0bf46b;
+    border-radius: 6px;
+    padding: 24px;
+    margin-top: -90px;
+    font-weight: 200;
+    font-size: 120%;
+    position: relative;
+    color: white;
+    margin-bottom: 24px;
+    h1 {
+        font-size: 36px;
+        margin: 0;
+        font-weight: 500;
+    }
+    p {
+        margin: 0;
+    }
+}

@@ -1,4 +1,9 @@
 <div class="card">
+    <div class="image">
+    <img src="<%= PetFinder.ImageUploader.url({@post.image, @post})%>" class="animal-image">
+    </div>
+    <div class="description">
+    </div>
     <%= link(
         @post.description, 
         to: Routes.animal_path(

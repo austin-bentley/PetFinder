@@ -13,4 +13,6 @@ defmodule PetFinderWeb.Helpers.Auth do
   def is_route_sign_in_or_up(%{request_path: path }) when path == "/sign-in" or path == "/registrations/new", do: true
   def is_route_sign_in_or_up(_conn), do: false
 
+  def is_home_page?(%{request_path: path }) when path == "/", do: true
+  def is_home_page?(_conn), do: false
 end

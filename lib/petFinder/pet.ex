@@ -23,6 +23,8 @@ defmodule PetFinder.Pet do
     |> where([p], p.status == "Lost")
     |> order_by(desc: :updated_at)
     |> limit(3)
+    |> join(:inner, [p], i in Image, on: p.animal_id == i.animal_id)
+    |> select([p,i], %{description: p.description, animal_id: p.animal_id, image: i.image})
     |> Repo.all()
   end
 
@@ -31,16 +33,15 @@ defmodule PetFinder.Pet do
     |> where([p], p.status == "Found")
     |> order_by(desc: :updated_at)
     |> limit(3)
+    |> join(:inner, [p], i in Image, on: p.animal_id == i.animal_id)
+    |> select([p,i], %{description: p.description, animal_id: p.animal_id, image: i.image})
     |> Repo.all()
   end
 
   def get_images_by_animal(id) do
-    one = Image
+    Image
     |> where([i], i.animal_id == ^id)
     |> Repo.all()
-    IO.inspect(one, label: "ooooo")
-    IO.inspect(id, label: "llllll")
-    one
   end
 
   def get_animal!(id), do: Repo.get!(Animal, id)

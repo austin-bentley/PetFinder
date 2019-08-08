@@ -9,20 +9,22 @@
   </head>
   <body>
     <header>
-      <section class="container">
-        <img src="<%= Routes.static_path(@conn, "/images/1561864_stock-photo-group-of-pets.jpg") %>" alt="assorted animals"/>
-      </section>
       <nav role="navigation">
-        <%= if signed_in?(@conn) do %>
-          <%= button "My animals", to: Routes.user_path(@conn, :show, @conn.assigns.user_id), method: :get %>
-          <%= button "Sign out", to: Routes.session_path(@conn, :delete), method: :delete %>
-        <% else %>
-          <%= unless is_route_sign_in_or_up(@conn) do %>
-            <%= link "Sign in", to: Routes.session_path(@conn, :new) %> 
-            | 
-            <%= link "Sign up", to: Routes.user_path(@conn, :new) %>
+        <div class="logo">
+          <h1>PetFinder</h1>
+        </div>
+        <div class="menu">
+          <%= if signed_in?(@conn) do %>
+            <%= button "My animals", to: Routes.user_path(@conn, :show, @conn.assigns.user_id), method: :get, class: "primary" %>
+            <%= button "Sign out", to: Routes.session_path(@conn, :delete), method: :delete, class: "primary" %>
+          <% else %>
+            <%= unless is_route_sign_in_or_up(@conn) do %>
+              <%= link "Sign in", to: Routes.session_path(@conn, :new) %> 
+              | 
+              <%= link "Sign up", to: Routes.user_path(@conn, :new) %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </nav>
     </header>
     <main role="main" class="container">
@@ -32,5 +34,6 @@
     </main>
     <%# <footer>this is the footer</footer> %>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
   </body>
 </html>

@@ -9,3 +9,55 @@
 // partial styles
 @import "./partial_styles/post_card.scss";
 @import "./partial_styles/animal_card.scss";
+
+//variables
+$primary-color: #0bf46b;
+$secondary-color: #6B0BF4;
+$accent-color: #F46B0B;
+$font-color: #4d4751;
+
+//header
+header {
+    margin: 0;
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 48px;
+        .logo {
+            font-family: 'Righteous', cursive;
+            color: $primary-color;
+            padding-left: 24px;
+        }
+        .menu {
+            color: $secondary-color;
+        }
+    }
+}
+
+button {
+
+}
+
+button.primary {
+    background-color: white;
+    border: none;
+    color: $font-color;
+    font-size: 14px;
+
+    &:hover {
+        color: $secondary-color;
+    }
+}
+
+button.secondary {
+    background-color: white;
+    border-color: $secondary-color;
+    color: $secondary-color;
+    font-size: 14px;
+
+    &:hover {
+        color: white;
+        background-color: $secondary-color;
+    }
+}
