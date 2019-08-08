@@ -25,7 +25,9 @@
 
 <h2>Pictures:</h2>
 <%= for image <- @images do %>
-  <img src="<%= PetFinder.ImageUploader.url({image.image, image})%>" class="animal-image"><br>
+  <div class="animal-image-container">
+    <img src="<%= PetFinder.ImageUploader.url({image.image, image})%>" class="animal-image"><br>
+  </div>
 <% end %>
 <hr />
 

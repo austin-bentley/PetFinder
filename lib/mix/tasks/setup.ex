@@ -10,5 +10,6 @@ defmodule Mix.Tasks.Setup do
     Mix.shell.cmd("mix run priv/repo/seeds/user_seed.exs")
     Mix.shell.cmd("mix run priv/repo/seeds/animal_seed.exs")
     Mix.shell.cmd("mix run priv/repo/seeds/post_seed.exs")
+    Mix.shell.cmd("mix run priv/repo/seeds/image_seed.exs")
   end
 end

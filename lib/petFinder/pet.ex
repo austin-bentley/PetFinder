@@ -35,9 +35,12 @@ defmodule PetFinder.Pet do
   end
 
   def get_images_by_animal(id) do
-    Image
+    one = Image
     |> where([i], i.animal_id == ^id)
     |> Repo.all()
+    IO.inspect(one, label: "ooooo")
+    IO.inspect(id, label: "llllll")
+    one
   end
 
   def get_animal!(id), do: Repo.get!(Animal, id)

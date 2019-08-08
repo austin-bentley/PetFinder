@@ -12,7 +12,6 @@ defmodule PetFinder.Pet.Image do
 
   @doc false
   def changeset(image, attrs) do
-    IO.inspect(attrs, label: "ooooo")
     image
     |> cast(attrs, [:image])
     |> cast_attachments(attrs, [:image])
