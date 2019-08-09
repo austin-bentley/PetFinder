@@ -9,13 +9,21 @@ defmodule PetFinder.Pet do
 
 
   def list_animals do
-    Repo.all(Animal)
+    Animal
+    |> join(:inner, [a], i in Image, on: a.id == i.animal_id)
+    |> select([a,i], %{species: a.species, animal_id: a.id, color: a.color, image: i.image})
+    |> Repo.all()
   end
 
   def get_user_animals!(id) do
     id = String.to_integer(id)
-    query = from a in "animals", where: a.user_id == ^id, select: [:id, :species, :color], order_by: [:id]
-    Repo.all(query)
+    # query = from a in "animals", where: a.user_id == ^id, select: [:id, :species, :color, :image], order_by: [:id]
+    Animal
+    |> where([a], a.user_id == ^id)
+    |> order_by(:id)
+    |> join(:inner, [a], i in Image, on: a.id == i.animal_id)
+    |> select([a,i], %{species: a.species, animal_id: a.id, color: a.color, image: i.image})
+    |> Repo.all()
   end
 
   def get_recently_lost_animals!() do

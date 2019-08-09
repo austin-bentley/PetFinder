@@ -1,11 +1,7 @@
-
-<tr>
-  <td><%= String.capitalize @animal.species %> </td>
-  <td>
-    <%=
-      Enum.map(@animal.color, &(String.capitalize(&1)))
-      |> Enum.join(", ") 
-    %>
-  </td>
-  <td><%= link "Details", to: Routes.animal_path(@conn, :show, @animal.id), class: "animal-detail__link" %></td>
-</tr>
+<div class="animal-card__container">
+  <%= if @animal.image do %>
+    <img class="animal-card__image" src="<%=PetFinder.ImageUploader.url({@animal.image, @animal})%>" />
+  <%= else %>
+    <span> no image </span>
+  <% end %>
+</div>

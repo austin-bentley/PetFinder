@@ -1,20 +1,13 @@
 <h1 class="animal-list__header">All Animals</h1>
 
 <div class="animal-list__body">
-    <table>
-        <tr>
-            <th>Species</th>
-            <th>Colors</th>
-            <th>More Info</th>
-        </tr>
-        <%= render_many(
-            @animals,
-            PetFinderWeb.PartialsView,
-            "animal_card.html",
-            as: :animal,
-            conn: @conn
-        )%>
-    </table>
+    <%= render_many(
+        @animals,
+        PetFinderWeb.PartialsView,
+        "animal_card.html",
+        as: :animal,
+        conn: @conn
+    )%>
 
     <span><%= link "Back", to: Routes.page_path(@conn, :index), class: "animal-list__back-link" %></span>
 </div>

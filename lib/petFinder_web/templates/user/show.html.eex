@@ -3,21 +3,14 @@
     <%= button "New Animal", to: Routes.animal_path(@conn, :new), method: :get, class: "secondary" %> 
 </div>
 
-<div class="user-body">
-    <table>
-        <tr>
-            <th>Species</th>
-            <th>Colors</th>
-            <th>More Info</th>
-        </tr>
-        <%= render_many(
-            @animals,
-            PetFinderWeb.PartialsView,
-            "animal_card.html",
-            as: :animal,
-            conn: @conn
-        )%>
-    </table>
+<div class="user-animals__body">
+    <%= render_many(
+        @animals,
+        PetFinderWeb.PartialsView,
+        "animal_card.html",
+        as: :animal,
+        conn: @conn
+    )%>
 
     <span><%= link "Back", to: Routes.page_path(@conn, :index), method: :get, class: "user-body__back-link"%></span>
 </div>

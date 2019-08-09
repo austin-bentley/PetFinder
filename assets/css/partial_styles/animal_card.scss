@@ -1,0 +1,9 @@
+.animal-card__container {
+    margin: 0 auto;
+    width: $full-width;
+}
+.animal-card__image {
+    object-fit: scale-down;
+    height: 250px;
+    width: 250px;
+}
