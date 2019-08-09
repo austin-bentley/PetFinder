@@ -1,18 +1,23 @@
 <div class="user-header">
-    <h1>User</h1>
-    <%= button "New Animal", to: Routes.animal_path(@conn, :new), method: :get %> 
+    <h1>Your Animals</h1>
+    <%= button "New Animal", to: Routes.animal_path(@conn, :new), method: :get, class: "secondary" %> 
 </div>
 
 <div class="user-body">
     <table>
+        <tr>
+            <th>Species</th>
+            <th>Colors</th>
+            <th>More Info</th>
+        </tr>
         <%= render_many(
             @animals,
             PetFinderWeb.PartialsView,
             "animal_card.html",
-            as: :post,
+            as: :animal,
             conn: @conn
         )%>
     </table>
 
-    <span><%= link "Back", to: Routes.page_path(@conn, :index), method: :get%></span>
+    <span><%= link "Back", to: Routes.page_path(@conn, :index), method: :get, class: "user-body__back-link"%></span>
 </div>

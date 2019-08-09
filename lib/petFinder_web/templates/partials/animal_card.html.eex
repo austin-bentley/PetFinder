@@ -1,6 +1,11 @@
 
 <tr>
-  <td><%= @post.species %> </td>
-  <td><%= Enum.join(@post.color, ", ") %></td>
-  <td><%= link "Details", to: Routes.animal_path(@conn, :show, @post.id) %></td>
+  <td><%= String.capitalize @animal.species %> </td>
+  <td>
+    <%=
+      Enum.map(@animal.color, &(String.capitalize(&1)))
+      |> Enum.join(", ") 
+    %>
+  </td>
+  <td><%= link "Details", to: Routes.animal_path(@conn, :show, @animal.id), class: "animal-detail__link" %></td>
 </tr>

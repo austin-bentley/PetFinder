@@ -1,6 +1,8 @@
-<h1>Sign in</h1>
-<%= form_for @conn, Routes.session_path(@conn, :new), [as: :session], fn f -> %>
-  <%= text_input f, :username, placeholder: "username" %>
-  <%= password_input f, :password, placeholder: "password" %>
-  <%= submit "Sign in" %>
-<% end %>
+<h1 class="sign-in-form__header">Sign in</h1>
+<div class="sign-in-form__container">
+  <%= form_for @conn, Routes.session_path(@conn, :new), [as: :session], fn f -> %>
+    <%= text_input f, :username, placeholder: "username" %>
+    <%= password_input f, :password, placeholder: "password" %>
+    <%= submit "Sign in", class: "secondary" %>
+  <% end %>
+</div>

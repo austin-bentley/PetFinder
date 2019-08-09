@@ -1,0 +1,8 @@
+@import "variables.scss";
+
+.sign-in-form__header,
+.sign-in-form__container {
+    margin: 16px auto 0;
+    color: $secondary-color;
+    max-width: $half-width;
+}

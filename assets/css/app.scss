@@ -1,20 +1,17 @@
 /* This file is for your main application css. */
+@import "variables.scss";
 
 @import "./phoenix.css";
 @import "./user.scss";
 @import "./animal.scss";
 @import "./error.scss";
 @import "./page.scss";
+@import "sign_in.scss";
 
 // partial styles
 @import "./partial_styles/post_card.scss";
 @import "./partial_styles/animal_card.scss";
 
-//variables
-$primary-color: #0bf46b;
-$secondary-color: #6B0BF4;
-$accent-color: #F46B0B;
-$font-color: #4d4751;
 
 //header
 header {

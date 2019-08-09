@@ -1,4 +1,44 @@
+@import "variables.scss";
+
 .user-header {
+    color: $primary-color;
     display: flex;
+    font-family: 'Righteous', cursive;
     justify-content: space-between;
+    margin: 16px auto 0;
+    max-width: $full-width;
+}
+
+.user-body {
+    margin: 16px auto 0;
+    max-width: $full-width;
+    color: $font-color;
+
+    tr:nth-child(even) {
+        background-color: $primary-background;
+    }
+
+    th, tr, td {
+        border-bottom: 1px solid $primary-color;
+    }
+
+    th,td {
+        padding-left: 8px;
+    }
+
+    .animal-detail__link {
+        color: $secondary-color;
+
+        &:hover {
+            color: $accent-color;
+        }
+    }
+
+    &__back-link {
+        color: $secondary-color;
+
+        &:hover {
+            color: $accent-color;
+        }
+    }
 }
