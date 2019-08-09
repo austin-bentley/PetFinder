@@ -26,17 +26,15 @@ header {
         height: 48px;
         .logo {
             font-family: 'Righteous', cursive;
-            color: $primary-color;
             padding-left: 24px;
+            a {
+                color: $primary-color;
+            }
         }
         .menu {
             color: $secondary-color;
         }
     }
-}
-
-button {
-
 }
 
 button.primary {

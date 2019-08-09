@@ -11,7 +11,7 @@
     <header>
       <nav role="navigation">
         <div class="logo">
-          <h1>PetFinder</h1>
+          <h1><%= link "PetFinder", to: Routes.page_path(@conn, :index) %></h1>
         </div>
         <div class="menu">
           <%= if signed_in?(@conn) do %>
@@ -19,9 +19,8 @@
             <%= button "Sign out", to: Routes.session_path(@conn, :delete), method: :delete, class: "primary" %>
           <% else %>
             <%= unless is_route_sign_in_or_up(@conn) do %>
-              <%= link "Sign in", to: Routes.session_path(@conn, :new) %> 
-              | 
-              <%= link "Sign up", to: Routes.user_path(@conn, :new) %>
+              <%= button "Sign in", to: Routes.session_path(@conn, :new), method: :get, class: "primary" %> 
+              <%= button "Sign up", to: Routes.user_path(@conn, :new), method: :get, class: "primary" %>
             <% end %>
           <% end %>
         </div>
