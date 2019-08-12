@@ -30,6 +30,7 @@ defmodule PetFinder.Pet do
     Post
     |> where([p], p.status == "Lost")
     |> order_by(desc: :updated_at)
+    |> distinct(desc: :animal_id)
     |> limit(3)
     |> join(:inner, [p], i in Image, on: p.animal_id == i.animal_id)
     |> select([p,i], %{description: p.description, animal_id: p.animal_id, image: i.image})
@@ -40,6 +41,7 @@ defmodule PetFinder.Pet do
     Post
     |> where([p], p.status == "Found")
     |> order_by(desc: :updated_at)
+    |> distinct(desc: :animal_id)
     |> limit(3)
     |> join(:inner, [p], i in Image, on: p.animal_id == i.animal_id)
     |> select([p,i], %{description: p.description, animal_id: p.animal_id, image: i.image})

@@ -3,16 +3,24 @@
 </div>
 
 <section class="phx-hero">
-  <h1><%= gettext "%{name}!", name: "Lost Pets" %></h1>
-  <p>Helping pets find their way home safe.</p>
+  <div class="hero-text">
+    <p>Helping pets find their way home safe</p>
+  </div>
+  <div class="hero-buttons">
+    <span><%= button "Search for a lost pet", to: Routes.animal_path(@conn, :index), method: :get, class: "secondary"%></span>
+    <%= if signed_in?(@conn) do %>
+      <span><%= button "Report a found pet", to: Routes.animal_path(@conn, :new), method: :get, class: "secondary"%></span>
+    <% end %>
+  </div>
 </section>
 
-<section class="column">
-  <span><%= button "Search for a lost pet", to: Routes.animal_path(@conn, :index), method: :get, class: "secondary"%></span>
-  <%= if signed_in?(@conn) do %>
-    <span><%= button "Report a found pet", to: Routes.animal_path(@conn, :new), method: :get, class: "secondary"%></span>
+<%# <section class="button-wrapper">
 
-    <h2>Posts near you</h2>
+</section> %>
+
+<section class="near-you">
+  <%= if signed_in?(@conn) do %>
+    <h2 class="subtitle">People are Posting Near You!</h2>
     <div class="card-container">
       <%= if is_empty?(@posts_near_user) do %>
         <p>Sorry, couldn't find any near you!</p>
@@ -27,28 +35,30 @@
       <% end %>
     </div>
   <% end %>
-
-      <h2>Recently lost pets:</h2>
-    <div class="card-container">
-      <%= render_many(
-        @recently_lost_animals, 
-        PetFinderWeb.PartialsView, 
-        "post_card.html", 
-        as: :post, 
-        conn: @conn
-      )%>
-    </div>
-
-    <h2>Recently found pets:</h2>
-    <div class="card-container">
-      <%= render_many(
-        @recently_found_animals, 
-        PetFinderWeb.PartialsView, 
-        "post_card.html", 
-        as: :post, 
-        conn: @conn
-      )%>
-    </div>
 </section>
 
+<section class="recently-lost">
+  <h2 class="subtitle">These Pets have Recently been Lost</h2>
+  <div class="card-container">
+    <%= render_many(
+      @recently_lost_animals, 
+      PetFinderWeb.PartialsView, 
+      "post_card.html", 
+      as: :post, 
+      conn: @conn
+    )%>
+  </div>
+</section>
 
+<section>
+  <h2 class="subtitle">These Pets have Recently been Found</h2>
+  <div class="card-container">
+    <%= render_many(
+      @recently_found_animals, 
+      PetFinderWeb.PartialsView, 
+      "post_card.html", 
+      as: :post, 
+      conn: @conn
+    )%>
+  </div>
+</section>

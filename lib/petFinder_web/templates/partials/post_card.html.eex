@@ -1,8 +1,6 @@
 <div class="card">
     <div class="image">
-    <img src="<%= PetFinder.ImageUploader.url({@post.image, @post})%>" class="animal-image">
-    </div>
-    <div class="description">
+        <img src="<%= PetFinder.ImageUploader.url({@post.image, @post})%>" class="animal-image">
     </div>
     <%= link(
         @post.description, 

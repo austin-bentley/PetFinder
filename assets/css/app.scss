@@ -12,6 +12,19 @@
 @import "./partial_styles/post_card.scss";
 @import "./partial_styles/animal_card.scss";
 
+//body
+body {
+    background: $page-color;
+}
+
+//section
+section {
+    margin: 0 auto;
+    max-width: 90%;
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+}
 
 //header
 header {
@@ -55,4 +68,16 @@ button.secondary {
         color: white;
         background-color: $secondary-color;
     }
+}
+
+//put_flash styles
+.alert.alert-info {
+    color: white;
+    background-color: #6B0BF4;
+    position: absolute;
+    width: 100%;
+    border: none;
+    z-index: 999999;
+    font-size: 18px;
+    text-align: center;
 }
